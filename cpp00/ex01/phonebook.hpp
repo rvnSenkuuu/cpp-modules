@@ -13,8 +13,9 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include "contact.hpp"
-#define CONTACT_NUMBER 8
+# include <iostream>
+# include "contact.hpp"
+# define MAX_CONTACT 8
 
 class	Phonebook
 {
@@ -22,9 +23,10 @@ class	Phonebook
 		Phonebook(void);
 		~Phonebook(void);
 		void	add_contact(void);
+		void	display_contact(void);
 	private:
 		int	contact_index;
-		Contact contact[CONTACT_NUMBER];
+		Contact contact[MAX_CONTACT];
 };
 
 #endif

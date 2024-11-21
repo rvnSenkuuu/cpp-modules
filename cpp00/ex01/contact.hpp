@@ -31,9 +31,9 @@ class	Contact
 		std::string	get_number(void) const;
 		std::string	get_secret(void) const;
 	private:
-		std::string	f_name;
-		std::string	l_name;
-		std::string	n_name;
+		std::string	fname;
+		std::string	lname;
+		std::string	nname;
 		std::string	phone_number;
 		std::string	secret;
 };

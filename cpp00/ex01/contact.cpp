@@ -14,29 +14,27 @@
 
 Contact::Contact(void)
 {
-	return;
 }
 
 Contact::~Contact(void)
 {
-	return;
 }
 
 void	Contact::set_fname(std::string str)
 {
-	this->f_name = str;
+	this->fname = str;
 	return;
 }
 
 void	Contact::set_lname(std::string str)
 {
-	this->l_name = str;
+	this->lname = str;
 	return;
 }
 
 void	Contact::set_nname(std::string str)
 {
-	this->n_name = str;
+	this->nname = str;
 	return;
 }
 
@@ -54,17 +52,17 @@ void	Contact::set_secret(std::string str)
 
 std::string	Contact::get_fname(void) const
 {
-	return this->f_name;
+	return this->fname;
 }
 
 std::string	Contact::get_lname(void) const
 {
-	return this->l_name;
+	return this->lname;
 }
 
 std::string	Contact::get_nname(void) const
 {
-	return this->n_name;
+	return this->nname;
 }
 
 std::string	Contact::get_number(void) const
