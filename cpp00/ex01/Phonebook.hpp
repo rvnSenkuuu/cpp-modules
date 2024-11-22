@@ -24,6 +24,8 @@ class	Phonebook
 		~Phonebook(void);
 		bool	add_contact(void);
 		void	display_contact(void);
+		int		get_contact_index(void) const;
+		void	set_contact_index(int i);
 	private:
 		int	_contact_index;
 		Contact contact[MAX_CONTACT];

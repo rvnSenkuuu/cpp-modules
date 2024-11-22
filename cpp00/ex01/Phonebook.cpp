@@ -21,22 +21,38 @@ Phonebook::~Phonebook(void)
 {
 }
 
+int	Phonebook::get_contact_index(void) const
+{
+	return this->_contact_index;
+}
+
+void	Phonebook::set_contact_index(int i)
+{
+	this->_contact_index = i;
+}
+
 void	Phonebook::display_contact(void)
 {
-	for (int i = 0; i < 8; i++)
+	std::cout << "|-------------------------------------------|" << std::endl;
+	std::cout << "| index | first name | last name | nickname |" << std::endl;
+	std::cout << "|-------------------------------------------|" << std::endl;
+	for (int i = 0; i < this->_contact_index; i++)
 	{
-		std::cout << "Contact first name: " << contact[i].get_fname() << std::endl;
-		std::cout << "Contact last name: " << contact[i].get_lname() << std::endl;
-		std::cout << "Contact nickname: " << contact[i].get_nname() << std::endl;
-		std::cout << "Contact phone number: " << contact[i].get_number() << std::endl;
-		std::cout << "Contact secret: " << contact[i].get_secret() << std::endl;
+		std::cout << "|" << i + 1 << "|";
+		std::cout << "|" << contact[i].get_fname() << "|";
+		std::cout << "|" << contact[i].get_lname() << "|";
+		std::cout << "|" << contact[i].get_nname() << "|";
+		std::cout << std::endl;
 	}
 }
 
 bool	Phonebook::add_contact(void)
 {
-	int	i = 0;
+	int	i = get_contact_index() % MAX_CONTACT;
 	if (!this->contact[i].create_contact())
+		return false;
+	set_contact_index(++i);
+	if (this->_contact_index > 8)
 		return false;
 	return true;
 }

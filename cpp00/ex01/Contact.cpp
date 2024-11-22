@@ -96,7 +96,7 @@ bool	Contact::create_contact(void)
 	while (nname.empty())
 	{
 		std::cout << "Enter the nickname: ";
-		std::getline(std::cin, lname);
+		std::getline(std::cin, nname);
 		if (std::cin.eof())
 			return false;
 	}
