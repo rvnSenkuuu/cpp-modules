@@ -114,10 +114,10 @@ bool	Contact::create_contact(void)
 		if (std::cin.eof())
 			return false;
 	}
-	set_fname(fname);
-	set_lname(lname);
-	set_nname(nname);
-	set_number(number);
-	set_secret(secret);
+	// set_fname(fname);
+	// set_lname(lname);
+	// set_nname(nname);
+	// set_number(number);
+	// set_secret(secret);
 	return true;
 }
