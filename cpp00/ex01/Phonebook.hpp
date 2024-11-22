@@ -14,6 +14,7 @@
 #define PHONEBOOK_HPP
 
 # include <iostream>
+# include <iomanip>
 # include "Contact.hpp"
 # define MAX_CONTACT 8
 

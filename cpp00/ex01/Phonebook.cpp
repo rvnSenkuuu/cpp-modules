@@ -34,15 +34,16 @@ void	Phonebook::set_contact_index(int i)
 void	Phonebook::display_contact(void)
 {
 	std::cout << "|-------------------------------------------|" << std::endl;
-	std::cout << "| index | first name | last name | nickname |" << std::endl;
+	std::cout << "|   index  |  f_name  |  l_name  |  n_name  |" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
 	for (int i = 0; i < this->_contact_index; i++)
 	{
-		std::cout << "|" << i + 1 << "|";
-		std::cout << "|" << contact[i].get_fname() << "|";
-		std::cout << "|" << contact[i].get_lname() << "|";
-		std::cout << "|" << contact[i].get_nname() << "|";
+		std::cout << "|" << std::setw(10) << i + 1;
+		std::cout << "|" << std::setw(10) << contact[i].get_fname();
+		std::cout << "|" << std::setw(10) << contact[i].get_lname();
+		std::cout << "|" << std::setw(10) << contact[i].get_nname() << "|";
 		std::cout << std::endl;
+		std::cout << "|-------------------------------------------|" << std::endl;
 	}
 }
 
