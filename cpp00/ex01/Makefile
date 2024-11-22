@@ -4,10 +4,10 @@ CPPFLAGS	=	-Wall -Werror -Wextra -std=c++98
 RM			=	rm -rf
 
 SRC			=	main.cpp \
-				contact.cpp \
-				phonebook.cpp \
+				Contact.cpp \
+				Phonebook.cpp \
 
-INCLUDE		=	contact.hpp phonebook.hpp
+INCLUDE		=	Contact.hpp Phonebook.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 

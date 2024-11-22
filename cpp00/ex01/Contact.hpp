@@ -13,6 +13,7 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
+# include <iostream>
 # include <string>
 
 class	Contact
@@ -20,6 +21,7 @@ class	Contact
 	public:
 		Contact(void);
 		~Contact(void);
+		bool	create_contact(void);
 		void	set_fname(std::string str);
 		void	set_lname(std::string str);
 		void	set_nname(std::string str);
@@ -31,11 +33,11 @@ class	Contact
 		std::string	get_number(void) const;
 		std::string	get_secret(void) const;
 	private:
-		std::string	fname;
-		std::string	lname;
-		std::string	nname;
-		std::string	phone_number;
-		std::string	secret;
+		std::string	_fname;
+		std::string	_lname;
+		std::string	_nname;
+		std::string	_phone_number;
+		std::string	_secret;
 };
 
 #endif

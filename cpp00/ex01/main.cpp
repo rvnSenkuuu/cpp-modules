@@ -12,26 +12,36 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
+
+static void	print_exit(void)
+{
+	std::cout << "Exiting Phonebook" << std::endl;
+}
 
 int	main(void)
 {
 	std::string	line;
 	Phonebook	book;
 
-	while (1)
+	while (true)
 	{
 		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, line);
-		if (line.empty())
-			return EXIT_FAILURE;
-		if (line == "EXIT")
+		if (std::cin.eof())
 			break;
+		if (line == "EXIT")
+		{
+			print_exit();
+			return EXIT_SUCCESS;
+		}
 		if (line == "ADD")
-			book.add_contact();
+			if (!book.add_contact())
+				break;
 		if (line == "SEARCH")
 			book.display_contact();
 	}
-	std::cout << "Exiting Phonebook" << std::endl;
+	std::cout << std::endl;
+	print_exit();
 	return EXIT_SUCCESS;
 }
