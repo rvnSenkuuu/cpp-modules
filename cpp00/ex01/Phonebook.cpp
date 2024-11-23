@@ -54,7 +54,7 @@ bool	Phonebook::display_specific_contact(void)
 	int i = std::atoi(index.c_str());
 	if (i < 1 || i > this->_contact_size)
 	{
-		std::cout << "Didn't find a contact in this index" << std::endl;
+		std::cout << "Didn't find a contact with the given index" << std::endl;
 		return false;
 	}
 	else
