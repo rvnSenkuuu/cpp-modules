@@ -13,6 +13,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
+# include <cstring>
 # include <iostream>
 # include <iomanip>
 # include "Contact.hpp"
@@ -29,6 +30,7 @@ class	Phonebook
 		void	set_contact_index(int i);
 	private:
 		int	_contact_index;
+		int	_contact_size;
 		Contact contact[MAX_CONTACT];
 };
 
