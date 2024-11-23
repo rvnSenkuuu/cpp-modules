@@ -75,49 +75,67 @@ std::string	Contact::get_secret(void) const
 	return this->_secret;
 }
 
+std::string	get_contact_info(int info)
+{
+	std::string	str;
+
+	switch (info)
+	{
+		case FIRST_NAME:
+			std::cout << "Enter the first name: ";
+			break;
+		case LAST_NAME:
+			std::cout << "Enter the last name: ";
+			break;
+		case NICK_NAME:
+			std::cout << "Enter the nickname: ";
+			break;
+		case NUMBER:
+			std::cout << "Enter the phone number: ";
+			break;
+		case SECRET:
+			std::cout << "Enter the deepest secret: ";
+			break;
+		default:
+			break;
+	}
+	while (str.empty())
+	{
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			return NULL;
+	}
+	return str;
+}
+
 bool	Contact::create_contact(void)
 {
-	std::string	fname, lname, nname, number, secret;
+	std::string	str;
 
-	while (fname.empty())
-	{
-		std::cout << "Enter the first name: ";
-		std::getline(std::cin, fname);
-		if (std::cin.eof())
-			return false;
-	}
-	while (lname.empty())
-	{
-		std::cout << "Enter the last name: ";
-		std::getline(std::cin, lname);
-		if (std::cin.eof())
-			return false;
-	}
-	while (nname.empty())
-	{
-		std::cout << "Enter the nickname: ";
-		std::getline(std::cin, nname);
-		if (std::cin.eof())
-			return false;
-	}
-	while (number.empty())
-	{
-		std::cout << "Enter the phone number: ";
-		std::getline(std::cin, number);
-		if (std::cin.eof())
-			return false;
-	}
-	while (secret.empty())
-	{
-		std::cout << "Enter the deepest secret: ";
-		std::getline(std::cin, secret);
-		if (std::cin.eof())
-			return false;
-	}
-	set_fname(fname);
-	set_lname(lname);
-	set_nname(nname);
-	set_number(number);
-	set_secret(secret);
+	str = get_contact_info(FIRST_NAME);
+	if (str.empty())
+		return false;
+	set_fname(str);
+
+	str = get_contact_info(LAST_NAME);
+	if (str.empty())
+		return false;
+	set_lname(str);
+
+	str = get_contact_info(NICK_NAME);
+	if (str.empty())
+		return false;
+	set_nname(str);
+
+	str = get_contact_info(NUMBER);
+	if (str.empty())
+		return false;
+	set_number(str);
+
+	str = get_contact_info(SECRET);
+	if (str.empty())
+		return false;
+	set_secret(str);
+
 	return true;
 }

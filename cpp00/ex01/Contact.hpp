@@ -16,6 +16,15 @@
 # include <iostream>
 # include <string>
 
+typedef enum	e_contact_info
+{
+	FIRST_NAME,
+	LAST_NAME,
+	NICK_NAME,
+	NUMBER,
+	SECRET,
+}				t_contact_info;
+
 class	Contact
 {
 	public:
