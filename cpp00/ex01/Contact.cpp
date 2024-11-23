@@ -75,6 +75,20 @@ std::string	Contact::get_secret(void) const
 	return this->_secret;
 }
 
+bool	has_number(std::string number)
+{
+	for (size_t i = 0; i < number.length(); i++)
+		if (std::isdigit(number[i]) == false) return false;
+	return true;
+}
+
+std::string	trim_space(std::string& str)
+{
+	str.erase(0, str.find_first_not_of(' '));
+	str.erase(str.find_last_not_of(' ') + 1);
+	return str;
+}
+
 bool	Contact::create_contact(void)
 {
 	std::string	fname, lname, nname, number, secret;
@@ -83,41 +97,42 @@ bool	Contact::create_contact(void)
 	{
 		std::cout << "Enter the first name: ";
 		std::getline(std::cin, fname);
-		if (std::cin.eof())
-			return false;
+		if (std::cin.eof()) return false;
 	}
 	while (lname.empty())
 	{
 		std::cout << "Enter the last name: ";
 		std::getline(std::cin, lname);
-		if (std::cin.eof())
-			return false;
+		if (std::cin.eof()) return false;
 	}
 	while (nname.empty())
 	{
 		std::cout << "Enter the nickname: ";
 		std::getline(std::cin, nname);
-		if (std::cin.eof())
-			return false;
+		if (std::cin.eof()) return false;
 	}
 	while (number.empty())
 	{
 		std::cout << "Enter the phone number: ";
 		std::getline(std::cin, number);
-		if (std::cin.eof())
-			return false;
+		if (has_number(number) == false)
+		{
+			std::cout << "Enter a valid phone number" << std::endl;
+			number.clear();
+			continue;
+		}
+		if (std::cin.eof()) return false;
 	}
 	while (secret.empty())
 	{
 		std::cout << "Enter the deepest secret: ";
 		std::getline(std::cin, secret);
-		if (std::cin.eof())
-			return false;
+		if (std::cin.eof()) return false;
 	}
-	set_fname(fname);
-	set_lname(lname);
-	set_nname(nname);
+	set_fname(trim_space(fname));
+	set_lname(trim_space(lname));
+	set_nname(trim_space(nname));
 	set_number(number);
-	set_secret(secret);
+	set_secret(trim_space(secret));
 	return true;
 }
