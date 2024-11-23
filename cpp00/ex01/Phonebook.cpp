@@ -41,6 +41,33 @@ std::string	resize_contact_name(std::string name)
 	return name;
 }
 
+bool	Phonebook::display_specific_contact(void)
+{
+	std::string	index;
+
+	std::cout << "Enter the index of the contact (1, " << this->_contact_size << "): ";
+	while (index.empty())
+	{
+		std::getline(std::cin, index);
+		if (std::cin.eof()) return false;
+	}
+	int i = std::atoi(index.c_str());
+	if (i < 1 || i > this->_contact_size)
+	{
+		std::cout << "Didn't find a contact in this index" << std::endl;
+		return false;
+	}
+	else
+	{
+		std::cout << "Contact [" << i << "] First name: " << contact[i - 1].get_fname() << std::endl;
+		std::cout << "Contact [" << i << "] Last name: " << contact[i - 1].get_lname() << std::endl;
+		std::cout << "Contact [" << i << "] Nickname: " << contact[i - 1].get_nname() << std::endl;
+		std::cout << "Contact [" << i << "] Phone number: " << contact[i - 1].get_number() << std::endl;
+		std::cout << "Contact [" << i << "] Deepest secret: " << contact[i - 1].get_secret() << std::endl;
+	}
+	return true;
+}
+
 void	Phonebook::display_contact(void)
 {
 	std::string	fname, lname, nname;
@@ -60,6 +87,7 @@ void	Phonebook::display_contact(void)
 		std::cout << std::endl;
 		std::cout << "|-------------------------------------------|" << std::endl;
 	}
+	if (!display_specific_contact()) return;
 }
 
 bool	Phonebook::add_contact(void)

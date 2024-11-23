@@ -13,9 +13,10 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-# include <cstring>
 # include <iostream>
 # include <iomanip>
+# include <cstdlib>
+# include <cstring>
 # include "Contact.hpp"
 # define MAX_CONTACT 8
 
@@ -26,6 +27,7 @@ class	Phonebook
 		~Phonebook(void);
 		bool	add_contact(void);
 		void	display_contact(void);
+		bool	display_specific_contact(void);
 		int		get_contact_index(void) const;
 		void	set_contact_index(int i);
 	private:
