@@ -1,16 +1,19 @@
-NAME		=	megaphone
+NAME		=	bank
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
-SRC			=	megaphone.cpp
+SRC			=	tests.cpp \
+				Account.cpp
+
+INCLUDE		=	Account.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 DEP			=	$(OBJ:.o=.d)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(INCLUDE)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_PATH)%.o:	%.cpp

@@ -1,6 +1,6 @@
 NAME		=	phonebook
 CXX			=	c++
-CPPFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
 SRC			=	main.cpp \
@@ -10,15 +10,16 @@ SRC			=	main.cpp \
 INCLUDE		=	Contact.hpp Phonebook.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
+DEP			=	$(OBJ:.o=.d)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ) $(INCLUDE)
-	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_PATH)%.o:	%.cpp
 	mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_PATH)
@@ -28,5 +29,7 @@ fclean:	clean
 
 re:	fclean
 	make all
+
+-include $(DEP)
 
 .PHONY: all clean fclean re
