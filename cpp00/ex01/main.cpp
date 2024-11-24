@@ -14,6 +14,11 @@
 #include <cstdlib>
 #include "Phonebook.hpp"
 
+static void	print_welcome(void)
+{
+	std::cout << "Welcome to my Phonebook" << std::endl;
+}
+
 static void	print_exit(void)
 {
 	std::cout << "Exiting Phonebook" << std::endl;
@@ -24,6 +29,7 @@ int	main(void)
 	std::string	line;
 	Phonebook	book;
 
+	print_welcome();
 	while (true)
 	{
 		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
@@ -35,11 +41,10 @@ int	main(void)
 			print_exit();
 			return EXIT_SUCCESS;
 		}
-		if (line == "ADD")
-			if (!book.add_contact())
-				break;
-		if (line == "SEARCH")
-			book.display_contact();
+		if (line == "ADD" && !book.add_contact())
+			break;
+		if (line == "SEARCH" && !book.display_contact())
+			break;
 	}
 	std::cout << std::endl;
 	print_exit();
