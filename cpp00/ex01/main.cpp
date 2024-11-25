@@ -19,6 +19,15 @@ static void	print_welcome(void)
 	std::cout << "Welcome to my Phonebook" << std::endl;
 }
 
+static void	print_command(void)
+{
+	std::cout << "Available commands:\n"
+				 "[ADD]: Used for adding a new contact\n"
+				 "[SEARCH]: Search for contacts in the phonebook\n"
+				 "[HELP]: Show all available commands\n"
+				 "[EXIT]: Quit Phonebook" << std::endl;
+}
+
 static void	print_exit(void)
 {
 	std::cout << "Exiting Phonebook" << std::endl;
@@ -30,9 +39,10 @@ int	main(void)
 	Phonebook	book;
 
 	print_welcome();
+	print_command();
 	while (true)
 	{
-		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
+		std::cout << "Enter a command > ";
 		std::getline(std::cin, line);
 		if (std::cin.eof())
 			break;
@@ -45,6 +55,8 @@ int	main(void)
 			break;
 		if (line == "SEARCH" && !book.display_contact())
 			break;
+		if (line == "HELP")
+			print_command();
 	}
 	std::cout << std::endl;
 	print_exit();

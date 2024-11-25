@@ -98,7 +98,10 @@ bool	Phonebook::display_contact(void)
 bool	Phonebook::add_contact(void)
 {
 	if (this->_contact_size == MAX_CONTACT)
+	{
+		std::cout << "WARNING: Your new contact will overwrite the oldest contact" << std::endl;
 		this->_contact_index = get_contact_index() % MAX_CONTACT;
+	}
 	if (!this->contact[this->_contact_index].create_contact())
 		return false;
 	this->_contact_index++;	
