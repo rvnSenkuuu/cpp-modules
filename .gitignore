@@ -1,6 +1,6 @@
 .objs
-.o
+*.o
 a.out
 .DS_Store
 .vscode
-.log
+*.log
