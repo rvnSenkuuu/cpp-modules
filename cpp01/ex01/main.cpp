@@ -22,5 +22,5 @@ int	main(void)
 	for (int j = 0; j < n; j++)
 		horde->announce();
 	delete[] horde;
-	return 0;
+	return EXIT_SUCCESS;
 }
