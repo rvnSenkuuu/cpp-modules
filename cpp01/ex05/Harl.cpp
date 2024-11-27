@@ -42,7 +42,7 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void	(Harl::*f_array[])(void) =
+	void	(Harl::*f_array[MAX_LEVEL])(void) =
 	{
 		&Harl::debug,
 		&Harl::info,
