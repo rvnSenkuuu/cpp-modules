@@ -44,23 +44,26 @@ int	main(int argc, char **argv)
 	}
 
 	std::string		line;
-	std::string		output = argv[1];
+	std::string		filename = argv[1];
+	std::string		output = filename + ".replace";
 	std::string		s1 = argv[2];
 	std::string		s2 = argv[3];
-	output.append(".replace");
 
-	std::ifstream	ifs(argv[1]);
+	std::ifstream	ifs(filename.c_str());
 	std::ofstream	ofs(output.c_str());
 
 	if (!check_stream(ifs, ofs)) return 1;
 	while (getline(ifs, line))
 	{
-		size_t	pos = 0;
-		while ((pos = line.find(s1, pos)) != std::string::npos)
+		if (!s1.empty())
 		{
-			line.erase(pos, s1.length());
-			line.insert(pos, s2);
-			pos += s2.length();
+			size_t	pos = 0;
+			while ((pos = line.find(s1, pos)) != std::string::npos)
+			{
+				line.erase(pos, s1.length());
+				line.insert(pos, s2);
+				pos += s2.length();
+			}
 		}
 		ofs << line << std::endl;
 	}
