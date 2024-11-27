@@ -50,7 +50,7 @@ void	Harl::complain(std::string level)
 		&Harl::error,
 	};
 
-	std::string	level_array[4] =
+	std::string	level_array[MAX_LEVEL] =
 	{
 		"DEBUG",
 		"INFO",
@@ -58,7 +58,7 @@ void	Harl::complain(std::string level)
 		"ERROR",
 	};
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < MAX_LEVEL; i++)
 	{
 		if (level == level_array[i])
 			(this->*f_array[i])();

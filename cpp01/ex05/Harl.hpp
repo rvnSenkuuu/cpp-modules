@@ -15,6 +15,8 @@
 
 # include <iostream>
 
+# define MAX_LEVEL 4
+
 class	Harl
 {
 	public:
