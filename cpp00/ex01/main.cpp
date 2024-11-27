@@ -49,7 +49,7 @@ int	main(void)
 		if (line == "EXIT")
 		{
 			print_exit();
-			return EXIT_SUCCESS;
+			return 0;
 		}
 		if (line == "ADD" && !book.add_contact())
 			break;
@@ -60,5 +60,5 @@ int	main(void)
 	}
 	std::cout << std::endl;
 	print_exit();
-	return EXIT_SUCCESS;
+	return 0;
 }

@@ -28,5 +28,5 @@ int	main(void)
 	std::cout << "String    Valeur: " << string << std::endl;
 	std::cout << "StringPTR Valeur: " << stringPTR << std::endl;
 	std::cout << "StringREF Valeur: " << stringREF << std::endl;
-	return EXIT_SUCCESS;
+	return 0;
 }

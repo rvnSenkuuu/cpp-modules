@@ -23,20 +23,12 @@ static void	print_usage(void)
 
 int	main(int argc, char **argv)
 {
-	const char		*output_file = "output.replace";
-	std::string		input;
 	std::ifstream	ifs;
 	std::ofstream	ofs;
 
 	if (argc != 4)
 		print_usage();
-	ifs.open(argv[1]);
-	ofs.open(output_file);
-
-	while (getline(ifs, input))
-		std::cout << "Input: " << input << std::endl;
 	
-	ifs.close();
-	ofs.close();
-	return EXIT_SUCCESS;
+	
+	return 0;
 }

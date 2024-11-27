@@ -22,5 +22,5 @@ int	main(void)
 	randomChump("Zombie_randomChump");
 
 	delete zombie_heap;
-	return EXIT_SUCCESS;
+	return 0;
 }
