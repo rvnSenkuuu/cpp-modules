@@ -55,7 +55,7 @@ int	Harl::get_complain_level(std::string level) const
 	{
 		"DEBUG",
 		"INFO",
-		"wARNING",
+		"WARNING",
 		"ERROR",
 		"EMPTY",
 	};
