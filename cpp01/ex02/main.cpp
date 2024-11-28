@@ -20,13 +20,13 @@ int	main(void)
 	std::string	&stringREF = string;
 
 	std::cout << "String    Adresse: " << &string << std::endl;
-	std::cout << "StringPTR Adresse: " << &stringPTR << std::endl;
+	std::cout << "StringPTR Adresse: " << stringPTR << std::endl;
 	std::cout << "StringREF Adresse: " << &stringREF << std::endl;
 
 	std::cout << std::endl;
 
 	std::cout << "String    Valeur: " << string << std::endl;
-	std::cout << "StringPTR Valeur: " << stringPTR << std::endl;
+	std::cout << "StringPTR Valeur: " << *stringPTR << std::endl;
 	std::cout << "StringREF Valeur: " << stringREF << std::endl;
 	return 0;
 }
