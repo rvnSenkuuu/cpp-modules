@@ -2,7 +2,7 @@
 *.o
 a.out
 .DS_Store
-.vscode
+*.vscode
 *.log
 *.txt
 *.replace
