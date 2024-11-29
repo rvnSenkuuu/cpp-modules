@@ -12,9 +12,9 @@
 
 #include "Zombie.hpp"
 
-
-Zombie::Zombie(void)
+Zombie::Zombie()
 {
+	std::cout << "new born" << std::endl;
 }
 
 Zombie::Zombie(std::string name) : _name(name)
@@ -23,9 +23,15 @@ Zombie::Zombie(std::string name) : _name(name)
 
 Zombie::~Zombie(void)
 {
+	std::cout << this->_name << " is dead" << std::endl;
 }
 
 void	Zombie::announce(void)
 {
 	std::cout << this->_name << ": BraiiiiinnnZZZZzz" << std::endl;
+}
+
+void	Zombie::set_name(std::string name)
+{
+	this->_name = name;
 }

@@ -16,9 +16,9 @@ int	main(void)
 {
 	Zombie	zombie_stack = Zombie("Zombie_stack");
 	Zombie	*zombie_heap = newZombie("Zombie_heap");
+
 	zombie_stack.announce();
 	zombie_heap->announce();
-
 	randomChump("Zombie_randomChump");
 
 	delete zombie_heap;
