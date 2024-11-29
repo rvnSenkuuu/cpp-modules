@@ -61,7 +61,7 @@ int	Fixed::get_raw_bits(void) const
 
 int	Fixed::to_int(void) const
 {
-	return this->_value >> this->_rawbits;
+	return this->_value / (1 << this->_rawbits);
 }
 
 float	Fixed::to_float(void) const
