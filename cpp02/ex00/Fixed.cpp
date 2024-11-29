@@ -51,8 +51,3 @@ int	Fixed::get_raw_bits(void) const
 	std::cout << "get_raw_bits member function called" << std::endl;
 	return this->_value;
 }
-
-std::ostream	&operator<<(std::ostream &os, Fixed const &src)
-{
-	return os << src.get_raw_bits();
-}

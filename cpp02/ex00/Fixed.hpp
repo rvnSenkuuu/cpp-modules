@@ -14,7 +14,6 @@
 #define FIXED_HPP
 
 # include <iostream>
-# include <ostream>
 
 class	Fixed
 {
@@ -33,7 +32,5 @@ class	Fixed
 		int					_value;
 		static const int	rawbits = 8;
 };
-
-std::ostream	&operator<<(std::ostream &os, Fixed const &src);
 
 #endif
