@@ -110,6 +110,32 @@ Fixed	Fixed::operator/(Fixed const &other) const
 	return Fixed(this->to_float() / other.to_float());
 }
 
+Fixed	&Fixed::operator++(void)
+{
+	this->_value++;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	tmp = *this;
+	++tmp._value;
+	return tmp;
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	this->_value--;
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	tmp = *this;
+	--tmp._value;
+	return tmp;
+}
+
 Fixed	&Fixed::min(Fixed &lhs, Fixed &rhs)
 {
 	if (lhs > rhs)

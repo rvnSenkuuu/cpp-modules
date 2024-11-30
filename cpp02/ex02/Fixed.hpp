@@ -25,17 +25,21 @@ class	Fixed
 		Fixed(Fixed const &other);
 		~Fixed();
 
-		Fixed	&operator=(Fixed const &other);
-		Fixed	operator+(Fixed const &other) const;
-		Fixed	operator-(Fixed const &other) const;
-		Fixed	operator*(Fixed const &other) const;
-		Fixed	operator/(Fixed const &other) const;
 		bool	operator<(Fixed const &other) const;
 		bool	operator<=(Fixed const &other) const;
 		bool	operator>(Fixed const &other) const;
 		bool	operator>=(Fixed const &other) const;
 		bool	operator==(Fixed const &other) const;
 		bool	operator!=(Fixed const &other) const;
+		Fixed	&operator=(Fixed const &other);
+		Fixed	operator+(Fixed const &other) const;
+		Fixed	operator-(Fixed const &other) const;
+		Fixed	operator*(Fixed const &other) const;
+		Fixed	operator/(Fixed const &other) const;
+		Fixed	&operator++(void);
+		Fixed	operator++(int value);
+		Fixed	&operator--(void);
+		Fixed	operator--(int value);
 
 		static Fixed			&min(Fixed &lhs, Fixed &rhs);
 		static const Fixed		&min(Fixed const &lhs, Fixed const &rhs);
