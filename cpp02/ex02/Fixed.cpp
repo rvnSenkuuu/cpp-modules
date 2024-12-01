@@ -166,7 +166,7 @@ const Fixed	&Fixed::max(Fixed const &lhs, Fixed const &rhs)
 
 int	Fixed::to_int(void) const
 {
-	return this->_value / (1 >> this->_rawbits);
+	return this->_value / (1 << this->_rawbits);
 }
 
 float	Fixed::to_float(void) const
