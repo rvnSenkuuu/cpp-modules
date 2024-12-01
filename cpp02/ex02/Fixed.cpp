@@ -19,13 +19,13 @@ Fixed::Fixed() : _value(0)
 
 Fixed::Fixed(int const value)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	this->_value = (int)roundf(value * (1 << this->_rawbits));
 }
 
 Fixed::Fixed(float const value)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	this->_value = (float)roundf(value * (1 << this->_rawbits));
 }
 
@@ -73,6 +73,13 @@ Fixed	Fixed::operator*(Fixed const &other) const
 	return Fixed(this->to_float() * other.to_float());
 }
 
+Fixed	Fixed::operator/(Fixed const &other) const
+{
+	if (other._value == 0)
+		return 0;
+	return Fixed(this->to_float() / other.to_float());
+}
+
 bool	Fixed::operator<(Fixed const &other) const
 {
 	return this->_value < other._value;
@@ -103,13 +110,6 @@ bool	Fixed::operator!=(Fixed const &other) const
 	return this->_value != other._value;
 }
 
-Fixed	Fixed::operator/(Fixed const &other) const
-{
-	if (other._value == 0)
-		return 0;
-	return Fixed(this->to_float() / other.to_float());
-}
-
 Fixed	&Fixed::operator++(void)
 {
 	this->_value++;
@@ -118,8 +118,8 @@ Fixed	&Fixed::operator++(void)
 
 Fixed	Fixed::operator++(int)
 {
-	Fixed	tmp = *this;
-	++tmp._value;
+	Fixed	tmp(*this);
+	_value++;
 	return tmp;
 }
 
@@ -131,8 +131,8 @@ Fixed	&Fixed::operator--(void)
 
 Fixed	Fixed::operator--(int)
 {
-	Fixed	tmp = *this;
-	--tmp._value;
+	Fixed	tmp(*this);
+	_value--;
 	return tmp;
 }
 
@@ -166,7 +166,7 @@ const Fixed	&Fixed::max(Fixed const &lhs, Fixed const &rhs)
 
 int	Fixed::to_int(void) const
 {
-	return this->_value / (1 << this->_rawbits);
+	return this->_value / (1 >> this->_rawbits);
 }
 
 float	Fixed::to_float(void) const
