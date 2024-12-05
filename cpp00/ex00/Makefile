@@ -24,7 +24,7 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean
-	make all
+	$(MAKE) all
 
 -include $(DEP)
 
