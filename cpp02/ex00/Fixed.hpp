@@ -18,11 +18,10 @@
 class	Fixed
 {
 	public:
-		Fixed();
+		Fixed(void);
 		Fixed(int const value);
 		Fixed(Fixed const &src);
-		~Fixed();
-
+		~Fixed(void);
 		Fixed	&operator=(Fixed const &other);
 
 		void	setRawBits(int const raw);

@@ -19,11 +19,11 @@
 class	Fixed
 {
 	public:
-		Fixed();
+		Fixed(void);
 		Fixed(int const value);
 		Fixed(float const value);
 		Fixed(Fixed const &other);
-		~Fixed();
+		~Fixed(void);
 
 		bool	operator<(Fixed const &other) const;
 		bool	operator<=(Fixed const &other) const;
