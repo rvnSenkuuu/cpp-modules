@@ -20,10 +20,10 @@
 class	ClapTrap
 {
 	public:
-		ClapTrap();
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &other);
-		~ClapTrap();
+		~ClapTrap(void);
 		ClapTrap	&operator=(ClapTrap const &other);
 
 		unsigned int	getAttack(void) const;
