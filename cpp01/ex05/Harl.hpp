@@ -20,8 +20,8 @@
 class	Harl
 {
 	public:
-		Harl();
-		~Harl();
+		Harl(void);
+		~Harl(void);
 
 		void	complain(std::string level);
 	private:

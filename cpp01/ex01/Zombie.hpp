@@ -19,12 +19,13 @@
 class	Zombie
 {
 	public:
-		Zombie();
+		Zombie(void);
 		Zombie(std::string name);
-		~Zombie();
+		~Zombie(void);
 
-		void	announce(void);
 		void	setName(std::string name);
+		void	announce(void);
+
 	private:
 		std::string	_name;
 };
