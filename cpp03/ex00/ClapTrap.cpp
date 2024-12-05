@@ -91,6 +91,8 @@ void	ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (amount > this->_health)
+		this->_health = 0;
 	if (this->_health == 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " has no health" << std::endl;
