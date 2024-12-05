@@ -17,13 +17,13 @@ static void	test_case(Point &a, Point &b, Point &c, Point &p)
 	bool	result;
 
 	std::cout << "--Point A--" << std::endl <<
-				 "x: " << a.get_x() << " y: " << a.get_y() << std::endl;
+				 "x: " << a.getX() << " y: " << a.getY() << std::endl;
 	std::cout << "--Point B--" << std::endl <<
-				 "x: " << b.get_x() << " y: " << b.get_y() << std::endl;
+				 "x: " << b.getX() << " y: " << b.getY() << std::endl;
 	std::cout << "--Point C--" << std::endl <<
-				 "x: " << c.get_x() << " y: " << c.get_y() << std::endl;
+				 "x: " << c.getX() << " y: " << c.getY() << std::endl;
 	std::cout << "--Point P--" << std::endl <<
-				 "x: " << p.get_x() << " y: " << p.get_y() << std::endl;
+				 "x: " << p.getX() << " y: " << p.getY() << std::endl;
 
 	result = bsp(a, b, c, p);
 	if (result)

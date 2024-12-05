@@ -20,57 +20,57 @@ Contact::~Contact(void)
 {
 }
 
-void	Contact::set_fname(std::string str)
+void	Contact::setFname(std::string str)
 {
 	this->_fname = str;
 	return;
 }
 
-void	Contact::set_lname(std::string str)
+void	Contact::setLname(std::string str)
 {
 	this->_lname = str;
 	return;
 }
 
-void	Contact::set_nname(std::string str)
+void	Contact::setNname(std::string str)
 {
 	this->_nname = str;
 	return;
 }
 
-void	Contact::set_number(std::string str)
+void	Contact::setNumber(std::string str)
 {
 	this->_phone_number = str;
 	return;
 }
 
-void	Contact::set_secret(std::string str)
+void	Contact::setSecret(std::string str)
 {
 	this->_secret = str;
 	return;
 }
 
-std::string	Contact::get_fname(void) const
+std::string	Contact::getFname(void) const
 {
 	return this->_fname;
 }
 
-std::string	Contact::get_lname(void) const
+std::string	Contact::getLname(void) const
 {
 	return this->_lname;
 }
 
-std::string	Contact::get_nname(void) const
+std::string	Contact::getNname(void) const
 {
 	return this->_nname;
 }
 
-std::string	Contact::get_number(void) const
+std::string	Contact::getNumber(void) const
 {
 	return this->_phone_number;
 }
 
-std::string	Contact::get_secret(void) const
+std::string	Contact::getSecret(void) const
 {
 	return this->_secret;
 }
@@ -129,10 +129,10 @@ bool	Contact::create_contact(void)
 		std::getline(std::cin, secret);
 		if (std::cin.eof()) return false;
 	}
-	set_fname(trim_space(fname));
-	set_lname(trim_space(lname));
-	set_nname(trim_space(nname));
-	set_number(number);
-	set_secret(trim_space(secret));
+	setFname(trim_space(fname));
+	setLname(trim_space(lname));
+	setNname(trim_space(nname));
+	setNumber(number);
+	setSecret(trim_space(secret));
 	return true;
 }

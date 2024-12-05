@@ -30,8 +30,8 @@ class	Phonebook
 		bool	display_contact(void);
 		bool	display_specific_contact(void);
 
-		void	set_contact_index(int i);
-		int		get_contact_index(void) const;
+		void	setContactIndex(int i);
+		int		getContactIndex(void) const;
 
 	private:
 		int	_contact_index;

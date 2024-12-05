@@ -16,9 +16,9 @@
 Fixed	area(Point const a, Point const b, Point const c)
 {
     Fixed area = (Fixed(1) / Fixed(2)) * 
-                    		((a.get_x() * (b.get_y() - c.get_y())) + 
-                             (b.get_x() * (c.get_y() - a.get_y())) + 
-                             (c.get_x() * (a.get_y() - b.get_y())));
+                    		((a.getX() * (b.getY() - c.getY())) + 
+                             (b.getX() * (c.getY() - a.getY())) + 
+                             (c.getX() * (a.getY() - b.getY())));
 
 	if (area < 0)
 		return area * Fixed(-1);

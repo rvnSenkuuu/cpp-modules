@@ -23,7 +23,7 @@ class	Harl
 		Harl();
 		~Harl();
 
-		int		get_complain_level(std::string level) const;
+		int		getComplainLevel(std::string level) const;
 		void	complain(std::string level);
 	private:
 		void	debug(void);

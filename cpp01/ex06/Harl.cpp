@@ -49,7 +49,7 @@ void	Harl::empty(void)
 	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
 
-int	Harl::get_complain_level(std::string level) const
+int	Harl::getComplainLevel(std::string level) const
 {
 	std::string	level_array[MAX_LEVEL] = 
 	{
@@ -79,7 +79,7 @@ void	Harl::complain(std::string level)
 		&Harl::empty,
 	};
 
-	int	complain_level = get_complain_level(level);
+	int	complain_level = getComplainLevel(level);
 	switch (complain_level)
 	{
 		case 0:

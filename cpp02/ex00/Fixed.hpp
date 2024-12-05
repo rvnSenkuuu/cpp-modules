@@ -25,8 +25,8 @@ class	Fixed
 
 		Fixed	&operator=(Fixed const &other);
 
-		void	set_raw_bits(int const raw);
-		int		get_raw_bits(void) const;
+		void	setRawBits(int const raw);
+		int		getRawBits(void) const;
 
 	private:
 		int					_value;

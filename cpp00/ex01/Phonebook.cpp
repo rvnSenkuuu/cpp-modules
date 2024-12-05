@@ -22,12 +22,12 @@ Phonebook::~Phonebook(void)
 {
 }
 
-int	Phonebook::get_contact_index(void) const
+int	Phonebook::getContactIndex(void) const
 {
 	return this->_contact_index;
 }
 
-void	Phonebook::set_contact_index(int i)
+void	Phonebook::setContactIndex(int i)
 {
 	this->_contact_index = i;
 }
@@ -59,11 +59,11 @@ bool	Phonebook::display_specific_contact(void)
 	}
 	else
 	{
-		std::cout << "Contact [" << i << "] First name: " << contact[i - 1].get_fname() << "\n"
-					 "Contact [" << i << "] Last name: " << contact[i - 1].get_lname() << "\n"
-					 "Contact [" << i << "] Nickname: " << contact[i - 1].get_nname() << "\n"
-					 "Contact [" << i << "] Phone number: " << contact[i - 1].get_number() << "\n"
-					 "Contact [" << i << "] Deepest secret: " << contact[i - 1].get_secret() << std::endl;
+		std::cout << "Contact [" << i << "] First name: " << contact[i - 1].getFname() << "\n"
+					 "Contact [" << i << "] Last name: " << contact[i - 1].getLname() << "\n"
+					 "Contact [" << i << "] Nickname: " << contact[i - 1].getNname() << "\n"
+					 "Contact [" << i << "] Phone number: " << contact[i - 1].getNumber() << "\n"
+					 "Contact [" << i << "] Deepest secret: " << contact[i - 1].getSecret() << std::endl;
 	}
 	return true;
 }
@@ -82,9 +82,9 @@ bool	Phonebook::display_contact(void)
 				 "|-------------------------------------------|" << std::endl;
 	for (int i = 0; i < this->_contact_size; i++)
 	{
-		fname = resize_contact_name(contact[i].get_fname());
-		lname = resize_contact_name(contact[i].get_lname());
-		nname = resize_contact_name(contact[i].get_nname());
+		fname = resize_contact_name(contact[i].getFname());
+		lname = resize_contact_name(contact[i].getLname());
+		nname = resize_contact_name(contact[i].getNname());
 		std::cout << "|" << std::setw(10) << i + 1 <<
 					 "|" << std::setw(10) << fname <<
 					 "|" << std::setw(10) << lname <<
@@ -100,7 +100,7 @@ bool	Phonebook::add_contact(void)
 	if (this->_contact_size == MAX_CONTACT)
 	{
 		std::cout << "WARNING: Your new contact will overwrite the oldest contact" << std::endl;
-		this->_contact_index = get_contact_index() % MAX_CONTACT;
+		this->_contact_index = getContactIndex() % MAX_CONTACT;
 	}
 	if (!this->contact[this->_contact_index].create_contact())
 		return false;

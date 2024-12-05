@@ -24,16 +24,16 @@ class	Contact
 
 		bool	create_contact(void);
 
-		void	set_fname(std::string str);
-		void	set_lname(std::string str);
-		void	set_nname(std::string str);
-		void	set_number(std::string str);
-		void	set_secret(std::string str);
-		std::string	get_fname(void) const;
-		std::string	get_lname(void) const;
-		std::string	get_nname(void) const;
-		std::string	get_number(void) const;
-		std::string	get_secret(void) const;
+		void	setFname(std::string str);
+		void	setLname(std::string str);
+		void	setNname(std::string str);
+		void	setNumber(std::string str);
+		void	setSecret(std::string str);
+		std::string	getFname(void) const;
+		std::string	getLname(void) const;
+		std::string	getNname(void) const;
+		std::string	getNumber(void) const;
+		std::string	getSecret(void) const;
 
 	private:
 		std::string	_fname;

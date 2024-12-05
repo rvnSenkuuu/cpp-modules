@@ -39,14 +39,14 @@ Fixed::~Fixed()
 	// std::cout << "Destructor called" << std::endl;
 }
 
-void	Fixed::set_raw_bits(int const raw)
+void	Fixed::setRawBits(int const raw)
 {
 	this->_value = raw;
 }
 
-int	Fixed::get_raw_bits(void) const
+int	Fixed::getRawBits(void) const
 {
-	// std::cout << "get_raw_bits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return this->_value;
 }
 
@@ -54,23 +54,23 @@ Fixed	&Fixed::operator=(Fixed const &other)
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
 	if (*this != other)
-		this->_value = other.get_raw_bits();
+		this->_value = other.getRawBits();
 	return *this;
 }
 
 Fixed	Fixed::operator+(Fixed const &other) const
 {
-	return Fixed(this->to_float() + other.to_float());
+	return Fixed(this->toFloat() + other.toFloat());
 }
 
 Fixed	Fixed::operator-(Fixed const &other) const
 {
-	return Fixed(this->to_float() - other.to_float());
+	return Fixed(this->toFloat() - other.toFloat());
 }
 
 Fixed	Fixed::operator*(Fixed const &other) const
 {
-	return Fixed(this->to_float() * other.to_float());
+	return Fixed(this->toFloat() * other.toFloat());
 }
 
 bool	Fixed::operator<(Fixed const &other) const
@@ -107,7 +107,7 @@ Fixed	Fixed::operator/(Fixed const &other) const
 {
 	if (other._value == 0)
 		return 0;
-	return Fixed(this->to_float() / other.to_float());
+	return Fixed(this->toFloat() / other.toFloat());
 }
 
 Fixed	&Fixed::operator++(void)
@@ -164,17 +164,17 @@ const Fixed	&Fixed::max(Fixed const &lhs, Fixed const &rhs)
 	return rhs;
 }
 
-int	Fixed::to_int(void) const
+int	Fixed::toInt(void) const
 {
 	return this->_value / (1 << this->_rawbits);
 }
 
-float	Fixed::to_float(void) const
+float	Fixed::toFloat(void) const
 {
 	return (float)this->_value / (float)(1 << this->_rawbits);
 }
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &src)
 {
-	return os << src.to_float();
+	return os << src.toFloat();
 }
