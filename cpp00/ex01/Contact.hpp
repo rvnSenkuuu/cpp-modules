@@ -22,8 +22,6 @@ class	Contact
 		Contact(void);
 		~Contact(void);
 
-		bool	create_contact(void);
-
 		void	setFname(std::string str);
 		void	setLname(std::string str);
 		void	setNname(std::string str);
@@ -34,6 +32,8 @@ class	Contact
 		std::string	getNname(void) const;
 		std::string	getNumber(void) const;
 		std::string	getSecret(void) const;
+
+		bool	create_contact(void);
 
 	private:
 		std::string	_fname;

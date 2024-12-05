@@ -12,7 +12,7 @@
 
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(void)
 {
 	std::cout << "new born" << std::endl;
 }

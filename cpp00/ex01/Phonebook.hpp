@@ -26,12 +26,12 @@ class	Phonebook
 		Phonebook(void);
 		~Phonebook(void);
 
+		void	setContactIndex(int i);
+		int		getContactIndex(void) const;
+
 		bool	add_contact(void);
 		bool	display_contact(void);
 		bool	display_specific_contact(void);
-
-		void	setContactIndex(int i);
-		int		getContactIndex(void) const;
 
 	private:
 		int	_contact_index;

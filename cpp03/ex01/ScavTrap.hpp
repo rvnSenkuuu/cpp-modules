@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 15:12:26 by tkara2            #+#    #+#             */
-/*   Updated: 2024/11/26 15:12:26 by tkara2           ###   ########.fr       */
+/*   Created: 2024/12/05 16:58:34 by tkara2            #+#    #+#             */
+/*   Updated: 2024/12/05 16:58:34 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-Weapon::Weapon(std::string weapon) : _type(weapon)
-{
-}
+# include "ClapTrap.hpp"
 
-Weapon::~Weapon(void)
+class	ScavTrap : public ClapTrap
 {
-}
+	public:
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const &other);
+		~ScavTrap(void);
+		ScavTrap	&operator=(ScavTrap const &other);
 
-std::string	const &Weapon::getType(void)
-{
-	return this->_type;
-}
+		void	guardGate(void);
+};
 
-void	Weapon::setType(std::string type)
-{
-	this->_type = type;
-}
+#endif

@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 	this->_name = "Nameless";
 	this->_health = 10;
 	this->_energy = 10;
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Assignement constructor called" << std::endl;
+	std::cout << "ClapTrap assignement constructor called" << std::endl;
 	this->_name = name;
 	this->_health = 10;
 	this->_energy = 10;
@@ -32,7 +32,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(ClapTrap const &other)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	this->_name = other._name;
 	this->_health = other._health;
 	this->_energy = other._energy;
@@ -41,12 +41,12 @@ ClapTrap::ClapTrap(ClapTrap const &other)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &other)
 {
-	std::cout << "Copy assignement operator called" << std::endl;
+	std::cout << "ClapTrap copy assignement operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_name = other._name;
@@ -55,6 +55,26 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &other)
 		this->_attack = other._attack;
 	}
 	return *this;
+}
+
+void	ClapTrap::setName(std::string name)
+{
+	this->_name = name;
+}
+
+void	ClapTrap::setAttack(unsigned int attack)
+{
+	this->_attack = attack;
+}
+
+void	ClapTrap::setEnergy(unsigned int energy)
+{
+	this->_energy = energy;
+}
+
+void	ClapTrap::setHealth(unsigned int health)
+{
+	this->_health = health;
 }
 
 unsigned int	ClapTrap::getHealth(void) const
@@ -107,11 +127,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_energy == 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " has no energy cannot repair itself" << std::endl;
-		return;
-	}
-	if (this->_health == MAX_HEALTH)
-	{
-		std::cout << "ClapTrap " << this->_name << " is full health" << std::endl;
 		return;
 	}
 	this->_health += amount;
