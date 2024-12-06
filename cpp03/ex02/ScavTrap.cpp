@@ -15,28 +15,28 @@
 ScavTrap::ScavTrap(void)
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
-	this->setName("Nameless");
-	this->setHealth(100);
-	this->setEnergy(50);
-	this->setAttack(20);
+	this->_name = "Nameless";
+	this->_health = 100;
+	this->_energy = 50;
+	this->_attack = 20;
 }
 
 ScavTrap::ScavTrap(std::string name)
 {
 	std::cout << "ScavTrap assignement constructor called" << std::endl;
-	this->setName(name);
-	this->setHealth(100);
-	this->setEnergy(50);
-	this->setAttack(20);
+	this->_name = name;
+	this->_health = 100;
+	this->_energy = 50;
+	this->_attack = 20;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &other)
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
-	this->setName(other.getName());
-	this->setHealth(other.getHealth());
-	this->setEnergy(other.getEnergy());
-	this->setAttack(other.getAttack());
+	this->_name = other._name;
+	this->_health = other._health;
+	this->_energy = other._energy;
+	this->_attack = other._attack;
 }
 
 ScavTrap::~ScavTrap(void)
@@ -49,10 +49,10 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &other)
 	std::cout << "ScavTrap copy assignement operator called" << std::endl;
 	if (this != &other)
 	{
-		this->setName(other.getName());
-		this->setHealth(other.getHealth());
-		this->setEnergy(other.getEnergy());
-		this->setAttack(other.getAttack());
+		this->_name = other._name;
+		this->_health = other._health;
+		this->_energy = other._energy;
+		this->_attack = other._attack;
 	}
 	return *this;
 }
@@ -60,4 +60,16 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &other)
 void	ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap " << this->getName() << " is now on Gate Keeper Mode" << std::endl;
+}
+
+void	ScavTrap::attack(const std::string &target)
+{
+	if (this->_energy == 0 || this->_health == 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " has no energy or health cannot attack" << std::endl;
+		return;
+	}
+	std::cout << "ScavTrap " << this->_name << " attacks " << target <<
+				 ", causing " << this->_attack << " points of damage !" << std::endl;
+	this->_energy--;
 }

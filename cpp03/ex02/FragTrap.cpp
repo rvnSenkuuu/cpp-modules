@@ -15,28 +15,28 @@
 FragTrap::FragTrap(void)
 {
 	std::cout << "FragTrap default constructor called" << std::endl;
-	this->setName("Nameless");
-	this->setHealth(100);
-	this->setEnergy(100);
-	this->setAttack(30);
+	this->_name = "Nameless";
+	this->_health = 100;
+	this->_energy = 100;
+	this->_attack = 30;
 }
 
 FragTrap::FragTrap(std::string name)
 {
 	std::cout << "FragTrap assignement constructor called" << std::endl;
-	this->setName(name);
-	this->setHealth(100);
-	this->setEnergy(100);
-	this->setAttack(30);
+	this->_name = name;
+	this->_health = 100;
+	this->_energy = 100;
+	this->_attack = 30;
 }
 
 FragTrap::FragTrap(FragTrap const &other)
 {
 	std::cout << "FragTrap copy constructor called" << std::endl;
-	this->setName(other.getName());
-	this->setHealth(other.getHealth());
-	this->setEnergy(other.getEnergy());
-	this->setAttack(other.getAttack());
+	this->_name = other._name;
+	this->_health = other._health;
+	this->_energy = other._energy;
+	this->_attack = other._attack;
 }
 
 FragTrap::~FragTrap(void)
@@ -49,15 +49,15 @@ FragTrap	&FragTrap::operator=(FragTrap const &other)
 	std::cout << "FragTrap copy assignement operator called" << std::endl;
 	if (this != &other)
 	{
-		this->setName(other.getName());
-		this->setHealth(other.getHealth());
-		this->setEnergy(other.getEnergy());
-		this->setAttack(other.getAttack());	
+		this->_name = other._name;
+		this->_health = other._health;
+		this->_energy = other._energy;
+		this->_attack = other._attack;
 	}
 	return *this;
 }
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap " << this->getName() << " request a high five (NOW!!!!)" << std::endl;
+	std::cout << "FragTrap " << this->getName() << " GIMME FIVE!" << std::endl;
 }
