@@ -1,11 +1,13 @@
-NAME		=	ClapTrap00
+NAME		=	ClapTrap02
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
 SRC			=	main.cpp \
-				ClapTrap.cpp
-INCLUDE		=	ClapTrap.hpp
+				ClapTrap.cpp \
+				ScavTrap.cpp \
+				FragTrap.cpp
+INCLUDE		=	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 DEP			=	$(OBJ:.o=.d)

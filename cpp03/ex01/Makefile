@@ -1,4 +1,4 @@
-NAME		=	bd01
+NAME		=	ClapTrap01
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf

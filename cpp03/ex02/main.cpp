@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 static void	displayClapTrapInfo(ClapTrap &claptrap)
 {
@@ -21,24 +23,45 @@ static void	displayClapTrapInfo(ClapTrap &claptrap)
 				 "Attack: " << claptrap.getAttack() << std::endl;
 }
 
+static void	displayScavTrapInfo(ScavTrap &scavtrap)
+{
+	std::cout << "---ScavTrap Info---" << std::endl <<
+				 "Name: " << scavtrap.getName() << std::endl <<
+				 "Health: " << scavtrap.getHealth() << std::endl <<
+				 "Energy: " << scavtrap.getEnergy() << std::endl <<
+				 "Attack: " << scavtrap.getAttack() << std::endl;
+}
+
+static void	displayFragTrapInfo(FragTrap &fragtrap)
+{
+	std::cout << "---FragTrap Info---" << std::endl <<
+				 "Name: " << fragtrap.getName() << std::endl <<
+				 "Health: " << fragtrap.getHealth() << std::endl <<
+				 "Energy: " << fragtrap.getEnergy() << std::endl <<
+				 "Attack: " << fragtrap.getAttack() << std::endl;
+}
+
 int	main(void)
 {
-	ClapTrap	a;
-	ClapTrap	b("CL4P-TP");
+	ScavTrap	scav("Tarkov");
+	ClapTrap	clap("CL4P-TP");
+	FragTrap	frag("Frag");
 
-	displayClapTrapInfo(a);
-	displayClapTrapInfo(b);
+	displayClapTrapInfo(clap);
+	displayScavTrapInfo(scav);
+	displayFragTrapInfo(frag);
 
-	a = b;
-	displayClapTrapInfo(a);
-	for (int i = 0; i < 10; i++)
-	{
-		a.attack(b.getName());
-		b.takeDamage(a.getAttack());
-	}
-	displayClapTrapInfo(b);
-	for (int j = 0; j < 10; j++)
-		b.beRepaired(1);
-	displayClapTrapInfo(b);
+	scav.attack(clap.getName());
+	clap.takeDamage(scav.getAttack());
+
+	frag.attack(scav.getName());
+	scav.takeDamage(frag.getAttack());
+
+	scav.guardGate();
+	frag.highFivesGuys();
+
+	displayClapTrapInfo(clap);
+	displayScavTrapInfo(scav);
+	displayFragTrapInfo(frag);
 	return 0;
 }

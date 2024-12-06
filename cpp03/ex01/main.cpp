@@ -35,7 +35,6 @@ int	main(void)
 {
 	ScavTrap	scav("Tarkov");
 	ClapTrap	clap("CL4P-TP");
-	ScavTrap	s(scav);
 
 	scav.attack(clap.getName());
 	clap.takeDamage(scav.getAttack());
