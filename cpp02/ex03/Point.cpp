@@ -30,7 +30,11 @@ Point::~Point(void)
 
 Point	&Point::operator=(Point const &other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		this->_x = other._x;
+		this->_y = other._y;
+	}
 	return *this;
 }
 

@@ -28,8 +28,8 @@ class	Point
 		Fixed const	&getY(void) const;
 
 	private:
-		Fixed const	_x;
-		Fixed const	_y;
+		Fixed	_x;
+		Fixed	_y;
 };
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
