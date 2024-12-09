@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,38 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-Dog::Dog(void) : Animal("Dog")
-{
-	std::cout << "Dog default constructor called" << std::endl;
-}
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-Dog::Dog(std::string type) : Animal(type)
+class	Dog : public Animal
 {
-	std::cout << "Dog assignement constructor called" << std::endl;
-}
+	public:
+		Dog(void);
+		Dog(std::string type);
+		Dog(Dog const &other);
+		~Dog(void);
+		Dog	&operator=(Dog const &other);
 
-Dog::Dog(Dog const &other)
-{
-	std::cout << "Dog copy assignement constructor called" << std::endl;
-	*this = other;
-}
+		void	makeSound(void) const;
+		void	tellIdea(void) const;
 
-Dog::~Dog(void)
-{
-	std::cout << "Dog destructor called" << std::endl;
-}
+	private:
+		Brain	*_brain;
+};
 
-Dog &Dog::operator=(Dog const &other)
-{
-	std::cout << "Dog copy assignement operator called" << std::endl;
-	if (this != &other)
-		this->_type = other._type;
-	return *this;
-}
-
-void	Dog::makeSound(void) const
-{
-	std::cout << "Woof woof woof" << std::endl;
-}
+#endif

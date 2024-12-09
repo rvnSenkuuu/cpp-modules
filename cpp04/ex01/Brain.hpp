@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 13:29:00 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/09 13:29:00 by tkara2           ###   ########.fr       */
+/*   Created: 2024/12/09 15:38:47 by tkara2            #+#    #+#             */
+/*   Updated: 2024/12/09 15:38:47 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-# include "Animal.hpp"
+# define MAX_IDEAS_COUNT 100
 
-class	Dog : public Animal
+# include <iostream>
+
+class	Brain
 {
 	public:
-		Dog(void);
-		Dog(std::string type);
-		Dog(Dog const &other);
-		~Dog(void);
-		Dog	&operator=(Dog const &other);
+		Brain(void);
+		Brain(std::string ideas);
+		Brain(Brain const &other);
+		~Brain(void);
+		Brain	&operator=(Brain const &other);
 
-		void	makeSound(void) const;
+		std::string	getIdeas(unsigned int i) const;
+
+	protected:
+		std::string	_ideas[MAX_IDEAS_COUNT];
 };
 
 #endif

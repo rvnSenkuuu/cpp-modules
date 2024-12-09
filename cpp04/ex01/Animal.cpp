@@ -37,7 +37,7 @@ Animal	&Animal::operator=(Animal const &other)
 {
 	std::cout << "Animal copy assignement operator called" << std::endl;
 	if (this != &other)
-		this->_type = other._type;
+		*this = other;
 	return *this;
 }
 
@@ -49,4 +49,9 @@ std::string	Animal::getType(void) const
 void	Animal::makeSound(void) const
 {
 	std::cout << "................" << std::endl;
+}
+
+void	Animal::tellIdea(void) const
+{
+	std::cout << "None" << std::endl;
 }
