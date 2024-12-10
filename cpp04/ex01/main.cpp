@@ -35,10 +35,10 @@ int	main(void)
 		troop[i]->makeSound();
 		troop[i]->tellIdea();
 	}
+	animal->tellIdea();
+
 	for (unsigned int i = 0; i < COUNT; i++)
 		delete troop[i];
-
-	animal->tellIdea();
 	delete animal;
 	return 0;
 }
