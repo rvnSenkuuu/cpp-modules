@@ -117,7 +117,7 @@ void	Character::unequip(int i)
 		std::cout << "There is no spell to unequip" << std::endl;
 		return;
 	}
-	if (i > MAX_MATERIA)
+	if (i > MAX_MATERIA || i < 0)
 	{
 		std::cout << "Spell index beyond the inventory capacity" << std::endl;
 		return;
