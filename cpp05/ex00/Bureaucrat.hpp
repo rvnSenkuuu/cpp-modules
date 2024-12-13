@@ -15,6 +15,17 @@
 
 # include <iostream>
 
+class	GradeTooHighException : public std::exception
+{
+	public:
+		virtual const char	*what(void) const throw();
+};
+class	GradeTooLowException : public std::exception
+{
+	public:
+		virtual const char	*what(void) const throw();
+};
+
 class	Bureaucrat
 {
 	public:
@@ -24,25 +35,16 @@ class	Bureaucrat
 		~Bureaucrat(void);
 		Bureaucrat	&operator=(Bureaucrat const &other);
 
-		int	getGrade(void) const;
+		int				getGrade(void) const;
 		std::string		getName(void) const;
-
-		class	GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char	*what(void) const throw();
-		};
-		class	GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char	*what(void) const throw();
-		};
 
 		void	incrementGrade();
 		void	decrementGrade();
+		class	GradeTooHighException;
+		class	GradeTooLowException;
 
 	private:
-		int	_grade;
+		int				_grade;
 		std::string		_name;
 };
 
