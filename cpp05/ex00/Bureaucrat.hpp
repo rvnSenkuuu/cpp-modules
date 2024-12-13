@@ -15,16 +15,6 @@
 
 # include <iostream>
 
-class	GradeTooHighException : public std::exception
-{
-	public:
-		virtual const char	*what(void) const throw();
-};
-class	GradeTooLowException : public std::exception
-{
-	public:
-		virtual const char	*what(void) const throw();
-};
 
 class	Bureaucrat
 {
@@ -40,8 +30,8 @@ class	Bureaucrat
 
 		void	incrementGrade();
 		void	decrementGrade();
-		class	GradeTooHighException;
 		class	GradeTooLowException;
+		class	GradeTooHighException;
 
 	private:
 		int				_grade;
@@ -49,5 +39,16 @@ class	Bureaucrat
 };
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat const &src);
+
+class	Bureaucrat::GradeTooHighException : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
+class	Bureaucrat::GradeTooLowException : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
 
 #endif
