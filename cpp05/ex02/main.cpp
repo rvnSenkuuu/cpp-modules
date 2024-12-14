@@ -1,0 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/12 14:01:57 by tkara2            #+#    #+#             */
+/*   Updated: 2024/12/12 14:01:57 by tkara2           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
+static void	testShrubberyForm(Bureaucrat &bureaucrat, ShrubberyCreationForm &form)
+{
+	try
+	{
+		Bureaucrat	test_bureaucrat(bureaucrat);
+		ShrubberyCreationForm	test_form(form);
+
+		std::cout << "~~~~~~~~~~~" << std::endl;
+		std::cout << test_bureaucrat;
+		test_bureaucrat.signForm(test_form);
+		test_form.execute(test_bureaucrat);
+		test_bureaucrat.executeForm(test_form);
+		std::cout << "~~~~~~~~~~~" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "testShrubberyForm exception: " << e.what() << std::endl;
+		return;
+	}
+}
+
+int	main(void)
+{
+	std::cout << "-------------------------------------" << std::endl;
+	Bureaucrat	test1_b("Test1_Bureaucrat", 137);
+	ShrubberyCreationForm	test1_f("Test1_Form");
+	testShrubberyForm(test1_b, test1_f);
+	std::cout << "-------------------------------------" << std::endl;
+	return 0;
+}
