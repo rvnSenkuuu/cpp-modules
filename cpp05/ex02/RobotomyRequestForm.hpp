@@ -10,3 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
+
+# include <cstdlib>
+# include <ctime>
+# include "AForm.hpp"
+
+class	RobotomyRequestForm : public AForm
+{
+	public:
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(const std::string &target);
+		RobotomyRequestForm(RobotomyRequestForm const &other);
+		~RobotomyRequestForm(void);
+		RobotomyRequestForm	&operator=(RobotomyRequestForm const &other);
+
+		void	execute(Bureaucrat const &executor) const;
+};
+
+#endif

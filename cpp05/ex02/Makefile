@@ -6,8 +6,9 @@ RM			=	rm -rf
 SRC			=	main.cpp \
 				Bureaucrat.cpp \
 				AForm.cpp \
-				ShrubberyCreationForm.cpp
-INCLUDE		=	Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp
+INCLUDE		=	Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 DEP			=	$(OBJ:.o=.d)

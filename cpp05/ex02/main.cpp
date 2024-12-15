@@ -13,6 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 static void	testShrubberyForm(Bureaucrat &bureaucrat, ShrubberyCreationForm &form)
 {
@@ -24,7 +25,6 @@ static void	testShrubberyForm(Bureaucrat &bureaucrat, ShrubberyCreationForm &for
 		std::cout << "~~~~~~~~~~~" << std::endl;
 		std::cout << test_bureaucrat;
 		test_bureaucrat.signForm(test_form);
-		test_form.execute(test_bureaucrat);
 		test_bureaucrat.executeForm(test_form);
 		std::cout << "~~~~~~~~~~~" << std::endl;
 	}
@@ -35,6 +35,25 @@ static void	testShrubberyForm(Bureaucrat &bureaucrat, ShrubberyCreationForm &for
 	}
 }
 
+static void	testRobotomyForm(Bureaucrat &bureaucrat, RobotomyRequestForm &form)
+{
+	try
+	{
+		Bureaucrat	test_bureaucrat(bureaucrat);
+		RobotomyRequestForm	test_form(form);
+
+		std::cout << "~~~~~~~~~~~" << std::endl;
+		std::cout << test_bureaucrat;
+		test_bureaucrat.signForm(test_form);
+		test_bureaucrat.executeForm(test_form);
+		std::cout << "~~~~~~~~~~~" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "testRobotomyForm exception: " << e.what() << std::endl;
+		return;
+	}
+}
 int	main(void)
 {
 	std::cout << "-------------------------------------" << std::endl;
@@ -42,5 +61,8 @@ int	main(void)
 	ShrubberyCreationForm	test1_f("Test1_Form");
 	testShrubberyForm(test1_b, test1_f);
 	std::cout << "-------------------------------------" << std::endl;
+	Bureaucrat	test2_b("Test2_Bureaucrat", 15);
+	RobotomyRequestForm	test2_f("Test2_Form");
+	testRobotomyForm(test2_b, test2_f);
 	return 0;
 }
