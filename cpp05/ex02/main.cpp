@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 static void	testShrubberyForm(Bureaucrat &bureaucrat, ShrubberyCreationForm &form)
 {
@@ -54,6 +55,27 @@ static void	testRobotomyForm(Bureaucrat &bureaucrat, RobotomyRequestForm &form)
 		return;
 	}
 }
+
+static void	testPresidentialForm(Bureaucrat &bureaucrat, PresidentialPardonForm &form)
+{
+	try
+	{
+		Bureaucrat	test_bureaucrat(bureaucrat);
+		PresidentialPardonForm	test_form(form);
+
+		std::cout << "~~~~~~~~~~~" << std::endl;
+		std::cout << test_bureaucrat;
+		test_bureaucrat.signForm(test_form);
+		test_bureaucrat.executeForm(test_form);
+		std::cout << "~~~~~~~~~~~" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "testPresidentialForm exception: " << e.what() << std::endl;
+		return;
+	}
+}
+
 int	main(void)
 {
 	std::cout << "-------------------------------------" << std::endl;
@@ -64,5 +86,9 @@ int	main(void)
 	Bureaucrat	test2_b("Test2_Bureaucrat", 15);
 	RobotomyRequestForm	test2_f("Test2_Form");
 	testRobotomyForm(test2_b, test2_f);
+	std::cout << "-------------------------------------" << std::endl;
+	Bureaucrat	test3_b("Test3_Bureaucrat", 1);
+	PresidentialPardonForm	test3_f("Test3_Form");
+	testPresidentialForm(test3_b, test3_f);
 	return 0;
 }

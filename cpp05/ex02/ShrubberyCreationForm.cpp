@@ -28,17 +28,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other)
 	*this = other;
 }
 
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
+{
+	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
+}
+
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)
 {
 	std::cout << "ShrubberyCreationForm copy assignement operator called" << std::endl;
 	if (this != &other)
 		AForm::operator=(other);
 	return *this;
-}
-
-ShrubberyCreationForm::~ShrubberyCreationForm(void)
-{
-	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
