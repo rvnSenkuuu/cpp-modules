@@ -118,6 +118,11 @@ std::ostream	&operator<<(std::ostream &os, Form const &src)
 	return os << std::endl;
 }
 
+void	Form::execute(Bureaucrat const &executor) const
+{
+	std::cout << executor.getName() << " execute basic form" << std::endl;
+}
+
 void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_gradeSign)
