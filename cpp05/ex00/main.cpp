@@ -72,18 +72,18 @@ int	main(void)
 {
 	std::cout << "------------------------------" << std::endl;
 	testCreateBureaucrat("Test1", -1);
-	std::cout << std::endl; 
+	std::cout << "------------------------------" << std::endl;
 	testCreateBureaucrat("Test2", 10);
-	std::cout << std::endl;
+	std::cout << "------------------------------" << std::endl;
 	testCreateBureaucrat("Test3", 150);
 	std::cout << "------------------------------" << std::endl;
 	testIncrementGrade("Test4", 5);
-	std::cout << std::endl;
+	std::cout << "------------------------------" << std::endl;
 	testIncrementGrade("Test5", 1);
 	std::cout << "------------------------------" << std::endl;
 	testDecrementGrade("Test6", 149);
-	std::cout << std::endl;
-	testDecrementGrade("Test6", 150);
+	std::cout << "------------------------------" << std::endl;
+	testDecrementGrade("Test7", 150);
 	std::cout << "------------------------------" << std::endl;
 	return 0;
 }

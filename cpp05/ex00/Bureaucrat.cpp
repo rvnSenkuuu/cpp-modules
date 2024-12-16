@@ -42,8 +42,11 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &other)
 	std::cout << "Bureaucrat copy assignement operator called" << std::endl;
 	if (this != &other)
 	{
-		this->_name = other._name;
 		this->_grade = other._grade;
+		if (this->_grade < 1)
+			throw GradeTooHighException();
+		if (this->_grade > 150)
+			throw GradeTooLowException();
 	}
 	return *this;
 }

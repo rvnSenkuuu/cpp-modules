@@ -15,7 +15,6 @@
 
 # include <iostream>
 
-
 class	Bureaucrat
 {
 	public:
@@ -34,8 +33,8 @@ class	Bureaucrat
 		class	GradeTooHighException;
 
 	private:
-		int				_grade;
-		std::string		_name;
+		int						_grade;
+		const std::string		_name;
 };
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat const &src);
