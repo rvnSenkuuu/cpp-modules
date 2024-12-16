@@ -22,8 +22,8 @@ Form::Form(void) : _isSigned(false),
 }
 
 Form::Form(const std::string &name, const std::string &target, const int &sign, const int &exec) : _isSigned(false),
-																								   _gradeSign(exec),
-																								   _gradeExecute(sign),
+																								   _gradeSign(sign),
+																								   _gradeExecute(exec),
 																								   _name(name),
 																								   _target(target)
 {
