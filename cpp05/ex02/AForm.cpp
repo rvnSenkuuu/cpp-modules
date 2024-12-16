@@ -13,19 +13,19 @@
 #include "AForm.hpp"
 
 AForm::AForm(void) : _isSigned(false),
-					_gradeSign(100),
-					_gradeExecute(100),
-					_name("Nameless"),
-					_target("Targetless")
+					 _gradeSign(100),
+					 _gradeExecute(100),
+					 _name("Nameless"),
+					 _target("Targetless")
 {
 	std::cout << "AForm default constructor called" << std::endl;
 }
 
 AForm::AForm(const std::string &name, const std::string &target, const int &sign, const int &exec) : _isSigned(false),
-																		 _gradeSign(exec),
-																		 _gradeExecute(sign),
-																		 _name(name),
-																		 _target(target)
+																									 _gradeSign(sign),
+																									 _gradeExecute(exec),
+																									 _name(name),
+																									 _target(target)
 {
 	std::cout << "AForm assignement constructor called" << std::endl;
 	if (this->_gradeSign < 1 || this->_gradeExecute < 1)
@@ -35,10 +35,10 @@ AForm::AForm(const std::string &name, const std::string &target, const int &sign
 }
 
 AForm::AForm(AForm const &other) : _isSigned(other._isSigned),
-								_gradeSign(other._gradeSign),
-								_gradeExecute(other._gradeExecute),
-								_name(other._name),
-								_target(other._target)
+								   _gradeSign(other._gradeSign),
+								   _gradeExecute(other._gradeExecute),
+								   _name(other._name),
+								   _target(other._target)
 {
 	std::cout << "AForm copy assignement contructor called" << std::endl;
 	*this = other;
@@ -115,6 +115,11 @@ std::ostream	&operator<<(std::ostream &os, AForm const &src)
 
 void	AForm::beSigned(Bureaucrat const &bureaucrat)
 {
+	if (this->_isSigned == true)
+	{
+	    std::cout << "The form " << this->getName() << " is already signed !" << std::endl;
+	    return;
+	}
 	if (bureaucrat.getGrade() > this->_gradeSign)
 		throw AForm::GradeTooLowException();
 	else

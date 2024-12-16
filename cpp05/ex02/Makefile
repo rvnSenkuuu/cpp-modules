@@ -1,4 +1,4 @@
-NAME		=	Bureaucrat01
+NAME		=	Bureaucrat02
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf

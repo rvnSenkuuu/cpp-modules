@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AAForm_HPP
-#define AAForm_HPP
+#ifndef AForm_HPP
+#define AForm_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
@@ -41,7 +41,7 @@ class	AForm
 		class	GradeTooHighException;
 		class	FormNotSigned;
 
-	private:
+	protected:
 		bool				_isSigned;
 		const int			_gradeSign;
 		const int			_gradeExecute;

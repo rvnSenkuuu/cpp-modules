@@ -36,13 +36,13 @@ class	Form
 
 		void			beSigned(Bureaucrat const &bureaucrat);
 		void			checkForm(Bureaucrat const &bureaucrat) const;
-		virtual void	execute(Bureaucrat const &executor) const;
+		virtual void	execute(Bureaucrat const &executor) const = 0;
 		class	GradeTooLowException;
 		class	GradeTooHighException;
 		class	FormNotSigned;
 		class	FormNotFound;
 
-	private:
+	protected:
 		bool				_isSigned;
 		const int			_gradeSign;
 		const int			_gradeExecute;

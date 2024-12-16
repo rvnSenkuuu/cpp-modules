@@ -46,7 +46,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	this->checkForm(executor);
 
 	std::cout << " * SOME DRILLING NOISE * " << std::endl;
-	int	res = std::rand() % 2;
+	std::srand(std::time(0));
+	int res = std::rand() % 2;
 
 	if (res == 0)
 		std::cout << this->getTarget() << " has been robotomized successfully !" << std::endl;

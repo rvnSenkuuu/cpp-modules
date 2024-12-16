@@ -13,19 +13,19 @@
 #include "Form.hpp"
 
 Form::Form(void) : _isSigned(false),
-					_gradeSign(100),
-					_gradeExecute(100),
-					_name("Nameless"),
-					_target("Targetless")
+				   _gradeSign(100),
+				   _gradeExecute(100),
+				   _name("Nameless"),
+				   _target("Targetless")
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
 Form::Form(const std::string &name, const std::string &target, const int &sign, const int &exec) : _isSigned(false),
-																		 _gradeSign(exec),
-																		 _gradeExecute(sign),
-																		 _name(name),
-																		 _target(target)
+																								   _gradeSign(exec),
+																								   _gradeExecute(sign),
+																								   _name(name),
+																								   _target(target)
 {
 	std::cout << "Form assignement constructor called" << std::endl;
 	if (this->_gradeSign < 1 || this->_gradeExecute < 1)
@@ -118,13 +118,13 @@ std::ostream	&operator<<(std::ostream &os, Form const &src)
 	return os << std::endl;
 }
 
-void	Form::execute(Bureaucrat const &executor) const
-{
-	std::cout << executor.getName() << " execute basic form" << std::endl;
-}
-
 void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
+	if (this->_isSigned == true)
+	{
+		std::cout << "The form " << this->getName() << " is already signed !" << std::endl;
+		return;
+	}
 	if (bureaucrat.getGrade() > this->_gradeSign)
 		throw Form::GradeTooLowException();
 	else

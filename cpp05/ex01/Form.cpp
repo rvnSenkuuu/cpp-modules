@@ -18,9 +18,9 @@ Form::Form(void) : _isSigned(false), _gradeSign(100), _gradeExecute(100), _name(
 }
 
 Form::Form(const std::string &name, const int &sign, const int &exec) : _isSigned(false),
-																		 _gradeSign(sign),
-																		 _gradeExecute(exec),
-																		 _name(name)
+																		_gradeSign(sign),
+																		_gradeExecute(exec),
+																		_name(name)
 {
 	std::cout << "Form assignement constructor called" << std::endl;
 	if (this->_gradeSign < 1 || this->_gradeExecute < 1)
