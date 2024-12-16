@@ -40,6 +40,7 @@ class	AForm
 		class	GradeTooLowException;
 		class	GradeTooHighException;
 		class	FormNotSigned;
+		class	FormAlreadySign;
 
 	protected:
 		bool				_isSigned;
@@ -60,6 +61,11 @@ class	AForm::GradeTooHighException : public std::exception
 		const char	*what(void) const throw();
 };
 class	AForm::FormNotSigned : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
+class	AForm::FormAlreadySign : public std::exception
 {
 	public:
 		const char	*what(void) const throw();

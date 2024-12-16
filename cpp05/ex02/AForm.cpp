@@ -102,6 +102,11 @@ const char	*AForm::FormNotSigned::what(void) const throw()
 	return "Form not signed";
 }
 
+const char	*AForm::FormAlreadySign::what(void) const throw()
+{
+	return "Form is already signed";
+}
+
 std::ostream	&operator<<(std::ostream &os, AForm const &src)
 {
 	os << src.getName() << " bureaucrat, sign grade " << src.getGradeSign()
@@ -116,10 +121,7 @@ std::ostream	&operator<<(std::ostream &os, AForm const &src)
 void	AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (this->_isSigned == true)
-	{
-	    std::cout << "The form " << this->getName() << " is already signed !" << std::endl;
-	    return;
-	}
+ 		throw AForm::FormAlreadySign();
 	if (bureaucrat.getGrade() > this->_gradeSign)
 		throw AForm::GradeTooLowException();
 	else

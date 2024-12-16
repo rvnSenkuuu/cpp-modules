@@ -41,6 +41,7 @@ class	Form
 		class	GradeTooHighException;
 		class	FormNotSigned;
 		class	FormNotFound;
+		class	FormAlreadySign;
 
 	protected:
 		bool				_isSigned;
@@ -66,6 +67,11 @@ class	Form::FormNotSigned : public std::exception
 		const char	*what(void) const throw();
 };
 class	Form::FormNotFound : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
+class	Form::FormAlreadySign : public std::exception
 {
 	public:
 		const char	*what(void) const throw();

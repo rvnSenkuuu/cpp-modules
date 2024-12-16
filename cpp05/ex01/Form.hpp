@@ -36,6 +36,7 @@ class	Form
 		void	beSigned(Bureaucrat const &bureaucrat);
 		class	GradeTooLowException;
 		class	GradeTooHighException;
+		class	FormAlreadySign;
 
 	private:
 		bool				_isSigned;
@@ -50,6 +51,11 @@ class	Form::GradeTooLowException : public std::exception
 		const char	*what(void) const throw();
 };
 class	Form::GradeTooHighException : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
+class	Form::FormAlreadySign : public std::exception
 {
 	public:
 		const char	*what(void) const throw();
