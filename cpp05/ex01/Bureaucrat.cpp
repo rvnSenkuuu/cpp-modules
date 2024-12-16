@@ -20,9 +20,9 @@ Bureaucrat::Bureaucrat(void) : _grade(42), _name("Nameless")
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _grade(grade), _name(name)
 {
 	std::cout << "Bureaucrat assignement constructor called" << std::endl;
-	if (grade < 1)
+	if (this->_grade < 1)
 		throw GradeTooHighException();
-	else if (grade > 150)
+	if (this->_grade > 150)
 		throw GradeTooLowException();
 }
 
@@ -43,9 +43,9 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &other)
 	if (this != &other)
 	{
 		this->_grade = other._grade;
-		if (_grade < 1)
+		if (this->_grade < 1)
 			throw GradeTooHighException();
-		else if (_grade > 150)
+		if (this->_grade > 150)
 			throw GradeTooLowException();
 	}
 	return *this;
