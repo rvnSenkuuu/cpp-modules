@@ -26,7 +26,7 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _grade(grade), _nam
 		throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &other)
+Bureaucrat::Bureaucrat(Bureaucrat const &other) : _grade(other._grade), _name(other._name)
 {
 	std::cout << "Bureaucrat copy assignement constructor called" << std::endl;
 	*this = other;

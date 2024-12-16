@@ -18,8 +18,8 @@ Form::Form(void) : _isSigned(false), _gradeSign(100), _gradeExecute(100), _name(
 }
 
 Form::Form(const std::string &name, const int &sign, const int &exec) : _isSigned(false),
-																		 _gradeSign(exec),
-																		 _gradeExecute(sign),
+																		 _gradeSign(sign),
+																		 _gradeExecute(exec),
 																		 _name(name)
 {
 	std::cout << "Form assignement constructor called" << std::endl;
@@ -99,6 +99,11 @@ std::ostream	&operator<<(std::ostream &os, Form const &src)
 
 void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
+	if (this->_isSigned == true)
+	{
+		std::cout << "The form " << this->getName() << " is already signed !" << std::endl;
+		return;
+	}
 	if (bureaucrat.getGrade() > this->_gradeSign)
 		throw Form::GradeTooLowException();
 	else
