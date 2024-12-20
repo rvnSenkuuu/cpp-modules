@@ -52,6 +52,9 @@ ScalarType	ScalarConvert::getScalarType(std::string toConvert)
 
 	if (toConvert == "-inff" || toConvert == "+inff" || toConvert == "nanf" || isFloat(toConvert) == true)
 		return FLOAT;
+
+	if (toConvert == "-inf" || toConvert == "+inf" || isDouble(toConvert) == true)
+		return DOUBLE;
 	return INVALID;
 }
 
@@ -72,6 +75,9 @@ void	ScalarConvert::convert(std::string toConvert)
 			break;
 		case FLOAT:
 			convertToFloat(toConvert);
+			break;
+		case DOUBLE:
+			convertToDouble(toConvert);
 			break;
 		default:
 			printNoDisplayable();
