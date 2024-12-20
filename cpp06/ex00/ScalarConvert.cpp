@@ -49,6 +49,9 @@ ScalarType	ScalarConvert::getScalarType(std::string toConvert)
 	ss << i;
 	if (toConvert == ss.str())
 		return INT;
+
+	if (toConvert == "-inff" || toConvert == "+inff" || toConvert == "nanf" || isFloat(toConvert) == true)
+		return FLOAT;
 	return INVALID;
 }
 
@@ -65,8 +68,11 @@ void	ScalarConvert::convert(std::string toConvert)
 			convertToChar(toConvert);
 			break;
 		case INT:
-			std::cout << "INT INDEX TYPE SENT" << std::endl;
-			//Todo: convertToInt(toConvert);
+			convertToInt(toConvert);
+			break;
+		case FLOAT:
+			convertToFloat(toConvert);
+			break;
 		default:
 			printNoDisplayable();
 			break;

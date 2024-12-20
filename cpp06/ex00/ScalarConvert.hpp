@@ -24,6 +24,8 @@ void	printNoDisplayable(void);
 void	convertToNan(void);
 void	convertToChar(std::string &toConvert);
 void	convertToInt(std::string &toConvert);
+void	convertToFloat(std::string toConvert);
+bool	isFloat(std::string toConvert);
 
 enum	ScalarType
 {
@@ -31,6 +33,7 @@ enum	ScalarType
 	NAN = 0,
 	CHAR = 1,
 	INT = 2,
+	FLOAT = 3,
 };
 
 class   ScalarConvert
