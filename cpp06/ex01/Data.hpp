@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-# define MAX_PERSON 10
+# define MAX_PERSON 5
 
 class	Data
 {
