@@ -70,7 +70,7 @@ void	convertToChar(std::string &toConvert)
 		printNoDisplayable();
 	std::cout << "Char: " << "'" << static_cast<char>(c) << "'" << std::endl << 
 				 "Int: " << static_cast<int>(c) << std::endl << 
-				 "Float: " << std::fixed << std::setprecision(2) << static_cast<float>(c) << std::endl << 
+				 "Float: " << std::fixed << std::setprecision(2) << static_cast<float>(c) << "f" << std::endl << 
 				 "Double: " << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
 
@@ -82,7 +82,7 @@ void	convertToInt(std::string &toConvert)
 	else 
 		std::cout << "Char: " << "'" << static_cast<char>(i) << "'" << std::endl;
 	std::cout << "Int: " << i << std::endl;
-	std::cout << "Float: " << std::fixed << std::setprecision(2) << static_cast<float>(i) << std::endl;
+	std::cout << "Float: " << std::fixed << std::setprecision(2) << static_cast<float>(i) << "f" <<  std::endl;
 	std::cout << "Double: " << std::setprecision(2) << static_cast<double>(i) << std::endl;
 }
 
