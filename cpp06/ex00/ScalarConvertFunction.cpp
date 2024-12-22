@@ -111,7 +111,7 @@ void	convertToDouble(std::string toConvert)
 	if (castLL < 0 || castLL > std::numeric_limits<char>::max() || !std::isprint(castLL))
 		std::cout << "Char: Impossible" << std::endl;
 	else
-		std::cout << "Char: " << static_cast<char>(castLL) << std::endl;
+		std::cout << "Char: " << "'" << static_cast<char>(castLL) << "'" << std::endl;
 	if (castLL < std::numeric_limits<int>::min() || castLL > std::numeric_limits<int>::max())
 		std::cout << "Int: Impossible" << std::endl;
 	else
