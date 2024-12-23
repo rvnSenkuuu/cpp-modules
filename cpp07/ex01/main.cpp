@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Iter.h"
 
 int	main(void)
@@ -24,7 +23,7 @@ int	main(void)
 	std::cout << "-----Before Iter(int)-----" << std::endl;
 	displayArray(int_array, size);
 
-	iter(int_array, size, addTen);
+	iter(int_array, size, addTen<int>);
 	std::cout << std::endl;
 
 	std::cout << "-----After Iter(int)-----" << std::endl;
@@ -40,7 +39,7 @@ int	main(void)
 	displayArray(str_array, MAX_SIZE);
 
 	std::cout << std::endl;
-	iter(str_array, MAX_SIZE, rot13);
+	iter(str_array, MAX_SIZE, rot13<std::string>);
 
 	std::cout << "-----After Iter(str)-----" << std::endl;
 	displayArray(str_array, MAX_SIZE);

@@ -13,10 +13,12 @@
 #ifndef ITER_H
 #define ITER_H
 
+# include <iostream>
+
 # define MAX_SIZE 5
 
-template<typename T>
-void	iter(T *array, size_t size, void (*f_ptr)(T &content))
+template<typename T1, typename T2>
+void	iter(T1 *array, size_t size, T2 f_ptr)
 {
 	for (size_t i = 0; i < size; i++)
 		f_ptr(array[i]);
