@@ -32,9 +32,9 @@ void	displayArray(T array, size_t size)
 }
 
 template<typename T>
-void	addTen(T &content)
+void	addFortyTwo(T &content)
 {
-	content += 10;
+	content += 42;
 }
 
 template<typename T>
@@ -42,9 +42,11 @@ void	rot13(T &content)
 {
 	for (size_t i = 0; i < content.length(); i++)
 	{
-		if (content[i] >= 'a' && content[i] <= 'm')
+		if ((content[i] >= 'a' && content[i] <= 'm')
+			|| (content[i] >= 'A' && content[i] <= 'M'))
 			content[i] += 13;
-		else if (content[i] >= 'n' && content[i] <= 'z')
+		else if ((content[i] >= 'n' && content[i] <= 'z') 
+				|| (content[i] >= 'N' && content[i] <= 'Z'))
 			content[i] -= 13;
 	}
 }

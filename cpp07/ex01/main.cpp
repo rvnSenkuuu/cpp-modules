@@ -18,12 +18,12 @@ int	main(void)
 	int		*int_array = new int[size];
 
 	for (size_t i = 0; i < size; i++)
-		int_array[i] = i;
+		int_array[i] = 0;
 
 	std::cout << "-----Before Iter(int)-----" << std::endl;
 	displayArray(int_array, size);
 
-	iter(int_array, size, addTen<int>);
+	iter(int_array, size, addFortyTwo<int>);
 	std::cout << std::endl;
 
 	std::cout << "-----After Iter(int)-----" << std::endl;
