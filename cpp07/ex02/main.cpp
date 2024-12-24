@@ -12,7 +12,7 @@
 
 #include "Array.hpp"
 
-#define MAX_VALUE 1
+#define MAX_VALUE 42
 
 int	main(void)
 {
