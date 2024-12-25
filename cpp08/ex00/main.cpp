@@ -60,7 +60,7 @@ static void easyFindList(int &find)
 int	main(void)
 {
 	int			findList = 10;
-	const int	&findVector = 99;
+	const int	findVector = 99;
 
 	easyFindVector(findVector);
 	std::cout << "-------------------------" << '\n';
