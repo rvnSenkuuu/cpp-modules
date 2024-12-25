@@ -1,10 +1,11 @@
-NAME		=	Easyfind
+NAME		=	Span
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
-SRC			=	main.cpp
-INCLUDE		=	Easyfind.hpp
+SRC			=	main.cpp \
+				Span.cpp
+INCLUDE		=	Span.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 DEP			=	$(OBJ:.o=.d)
