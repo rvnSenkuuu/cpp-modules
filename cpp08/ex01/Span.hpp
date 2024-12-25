@@ -28,7 +28,7 @@ class	Span
 		~Span(void);
 		Span	&operator=(Span const &other);
 
-		void	fillRandomValue(void);
+		void	addNTimes(unsigned int n);
 		void	displayData(void) const;
 		void	addNumber(int n);
 		int		shortestSpan(void);

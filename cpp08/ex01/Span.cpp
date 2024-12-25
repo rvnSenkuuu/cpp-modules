@@ -62,12 +62,15 @@ void	Span::addNumber(int n)
 	this->_data.insert(this->_data.end(), n);
 }
 
-void	Span::fillRandomValue(void)
+void	Span::addNTimes(unsigned int n)
 {
-	for (unsigned int i = 0; i < this->_size; i++)
+	if (n > this->_size)
+		throw std::out_of_range("The range is greater than the max size");
+
+	for (unsigned int i = 0; i < n; i++)
 	{
 		int random = std::rand();
-		this->_data.push_back(random);
+		this->addNumber(random);
 	}
 }
 
