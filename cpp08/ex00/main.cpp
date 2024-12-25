@@ -12,15 +12,14 @@
 
 #include "Easyfind.hpp"
 
-// #define MAX_SIZE 10
-
 static void	easyFindVector(const int &find)
 {
 	const int	maxSize = 10;
+	const int	tmp[maxSize] = {1, 2, 3, 10, 55, 65, 10, 99, 77, 10};
 	std::vector<int>	data;
 
 	for (int i = 0; i < maxSize; i++)
-		data.push_back(i * 10);
+		data.push_back(tmp[i]);
 
 	displayContainers(data);
 
@@ -39,10 +38,11 @@ static void	easyFindVector(const int &find)
 static void easyFindList(int &find)
 {
 	const int	maxSize = 10;
+	const int	tmp[maxSize] = {1, 2, 3, 10, 55, 65, 10, 99, 77, 10};
 	std::list<int>	data;
 
 	for (int i = 0; i < maxSize; i++)
-		data.push_back(i * 10);
+		data.push_back(tmp[i]);
 	
 	displayContainers(data);
 	try
@@ -59,11 +59,11 @@ static void easyFindList(int &find)
 
 int	main(void)
 {
-	int			find = 20;
-	const int	&findConst = 20;
+	int			findList = 10;
+	const int	&findVector = 99;
 
-	easyFindVector(findConst);
+	easyFindVector(findVector);
 	std::cout << "-------------------------" << '\n';
-	easyFindList(find);
+	easyFindList(findList);
 	return 0;
 }
