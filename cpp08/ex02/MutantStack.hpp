@@ -37,6 +37,12 @@ void	convertLowercase(std::string &input);
 CommandType	getCommandType(const std::string &input);
 
 template<typename T>
+void	displayStackContent(T &content)
+{
+	std::cout << "Value: " << content << '\n';
+}
+
+template<typename T>
 bool	addNumber(T &stack)
 {
 	std::string	input;

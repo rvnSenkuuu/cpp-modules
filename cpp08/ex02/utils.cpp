@@ -30,10 +30,10 @@ void	convertLowercase(std::string &input)
 			input[i] += 32;
 }
 
-void	displayStackContent(const int &content)
-{
-	std::cout << "Value: " << content << '\n';
-}
+// void	displayStackContent(const int &content)
+// {
+// 	std::cout << "Value: " << content << '\n';
+// }
 
 CommandType	getCommandType(const std::string &input)
 {
