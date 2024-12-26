@@ -43,11 +43,11 @@ int	main(void)
 				break;
 			case 3:
 				std::cout << "The current size of the stack: " << mstack.size() << '\n';
-				std::for_each(mstack.cbegin(), mstack.cend(), displayStackContent<int>);
+				std::for_each(mstack.cbegin(), mstack.cend(), displayStackContent<const int>);
 				break;
 			case 4:
 				std::cout << "The current size of the stack: " << mstack.size() << '\n';
-				std::for_each(mstack.crbegin(), mstack.crend(), displayStackContent<int>);
+				std::for_each(mstack.crbegin(), mstack.crend(), displayStackContent<const int>);
 				break;
 			case 5:
 				std::cout << "Exiting the program" << std::endl;
