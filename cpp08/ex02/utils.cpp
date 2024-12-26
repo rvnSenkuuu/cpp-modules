@@ -18,6 +18,7 @@ void	displayCommand(void)
 				 "[PUSH]: Used for pushing a number onto the stack\n"
 				 "[POP]: Removes the top number from the stack\n"
 				 "[PRINT]: Display the values inside the stack\n"
+				 "[RPRINT]: Displays the values in reverse order inside the stack\n"
 				 "[HELP]: Show all available commands\n"
 				 "[EXIT]: Exit the program" << std::endl;
 }
@@ -31,7 +32,7 @@ void	convertLowercase(std::string &input)
 
 void	displayStackContent(const int &content)
 {
-	std::cout << "Stack: " << content << '\n';
+	std::cout << "Value: " << content << '\n';
 }
 
 CommandType	getCommandType(const std::string &input)
@@ -46,5 +47,7 @@ CommandType	getCommandType(const std::string &input)
 		return HELP;
 	if (input == "print")
 		return PRINT;
+	if (input == "rprint")
+		return RPRINT;
 	return INVALID;
 }

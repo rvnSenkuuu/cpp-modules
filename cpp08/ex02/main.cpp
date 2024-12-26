@@ -42,9 +42,14 @@ int	main(void)
 				displayCommand();
 				break;
 			case 3:
+				std::cout << "The current size of the stack: " << mstack.size() << '\n';
 				std::for_each(mstack.cbegin(), mstack.cend(), displayStackContent);
 				break;
 			case 4:
+				std::cout << "The current size of the stack: " << mstack.size() << '\n';
+				std::for_each(mstack.crbegin(), mstack.crend(), displayStackContent);
+				break;
+			case 5:
 				std::cout << "Exiting the program" << std::endl;
 				return 0;
 			default:

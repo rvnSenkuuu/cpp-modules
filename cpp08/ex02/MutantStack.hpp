@@ -27,7 +27,8 @@ typedef enum
 	POP = 1,
 	HELP = 2,
 	PRINT = 3,
-	EXIT = 4
+	RPRINT = 4,
+	EXIT = 5
 }	CommandType;
 
 void	displayCommand(void);
