@@ -14,30 +14,43 @@
 
 int	main(void)
 {
+	std::string			input;
 	MutantStack<int>	mstack;
 
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(21);
-	mstack.push(42);
-	mstack.push(84);
+	displayCommand();
+	while (true)
+	{
+		std::cout << "Enter a command > ";
+		std::getline(std::cin, input);
+		convertLowercase(input);
+		if (std::cin.eof() || std::cin.fail())
+		{
+			std::cin.clear();
+			break;
+		}
 
-
-	std::cout << "--------------------------" << std::endl;
-	std::cout << "After pushing in the stack" << std::endl;
-	std::cout << "mstack top(): " << mstack.top() << std::endl;
-	std::cout << "mstack size: " << mstack.size() << std::endl;
-	std::cout << "--------------------------" << std::endl;
-
-	mstack.pop();
-	mstack.pop();
-
-	std::cout << std::endl;
-	std::cout << "--------------------------" << std::endl;
-	std::cout << "After popping from the stack" << std::endl;
-	std::cout << "mstack top(): " << mstack.top() << std::endl;
-	std::cout << "mstack size: " << mstack.size() << std::endl;
-	std::cout << "--------------------------" << std::endl;
-
+		CommandType	type = getCommandType(input);
+		switch (type)
+		{
+			case 0:
+				if (!addNumber(mstack)) continue;
+				break;
+			case 1:
+				mstack.pop();
+				break;
+			case 2:
+				displayCommand();
+				break;
+			case 3:
+				std::for_each(mstack.cbegin(), mstack.cend(), displayStackContent);
+				break;
+			case 4:
+				std::cout << "Exiting the program" << std::endl;
+				return 0;
+			default:
+				std::cout << "Invalid command" << '\n';
+				break;
+		}
+	}
 	return 0;
 }

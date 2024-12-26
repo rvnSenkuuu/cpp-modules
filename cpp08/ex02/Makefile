@@ -3,7 +3,8 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
-SRC			=	main.cpp
+SRC			=	main.cpp \
+				utils.cpp
 INCLUDE		=	MutantStack.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
