@@ -67,6 +67,7 @@ void	Span::addNTimes(unsigned int n)
 	if (n > this->_size)
 		throw std::out_of_range("The range is greater than the max size");
 
+	std::srand(std::time(0));
 	for (unsigned int i = 0; i < n; i++)
 	{
 		int random = std::rand();

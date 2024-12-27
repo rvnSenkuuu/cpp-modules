@@ -14,6 +14,7 @@
 #define SPAN_HPP
 
 # include <climits>
+# include <ctime>
 # include <cmath>
 # include <iostream>
 # include <exception>
