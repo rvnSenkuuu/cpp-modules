@@ -30,6 +30,7 @@ class	BitcoinExchange
 		BitcoinExchange	&operator=(BitcoinExchange const &other);
 
 		void	loadData(const char *dataFile);
+		void	printData(void);
 
 	private:
 		BitcoinExchange(const std::string &dataFile);

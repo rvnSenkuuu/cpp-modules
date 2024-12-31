@@ -48,4 +48,24 @@ void	BitcoinExchange::loadData(const char *dataFile)
 	std::ifstream	ifs(dataFile);
 	if (!ifs.is_open())
 		throw std::invalid_argument("No such file");
+
+	getline(ifs, line);
+	while (getline(ifs, line))
+	{
+		size_t	delimiterPos = line.find(',');
+		if (delimiterPos == std::string::npos)
+			throw std::logic_error("Missing comma. Excepted format: 'data,value'");
+		std::string	date = line.substr(0, delimiterPos);
+		double		value = std::atof(line.substr(delimiterPos + 1).c_str());
+		this->_data[date] = value;
+	}
+}
+
+void	BitcoinExchange::printData(void)
+{
+	std::map<std::string, double>::iterator	it = this->_data.begin();
+	std::map<std::string, double>::iterator	ite = this->_data.end();
+	for (; it != ite; it++)
+		std::cout << "Date: " << it->first << " Value: " << it->second << '\n';
+	std::cout << std::endl;
 }
