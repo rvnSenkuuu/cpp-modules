@@ -15,25 +15,40 @@
 
 # include <iostream>
 # include <fstream>
+# include <sstream>
 # include <exception>
 # include <algorithm>
 # include <map>
 
 # define DATA_FILE "./data.csv"
+# define MAX_VALUE 10000
+
+template<typename T>
+std::string	numberToString(T number)
+{
+	std::ostringstream	oss;
+	oss << number;
+	return oss.str();
+}
 
 class	BitcoinExchange
 {
 	public:
-		BitcoinExchange(void);
+		BitcoinExchange(const char *dataFile);
 		BitcoinExchange(BitcoinExchange const &other);
 		~BitcoinExchange(void);
 		BitcoinExchange	&operator=(BitcoinExchange const &other);
 
-		void	loadData(const char *dataFile);
+		void	convertBitcoin(const char *inputFile);
 		void	printData(void);
 
 	private:
-		BitcoinExchange(const std::string &dataFile);
+		BitcoinExchange(void);
+
+		void	loadData(const char *dataFile);
+		void	checkValue(const double &value);
+
+	private:
 		std::map<std::string, double>	_data;
 };
 

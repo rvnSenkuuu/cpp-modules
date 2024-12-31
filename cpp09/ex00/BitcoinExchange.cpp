@@ -17,10 +17,10 @@ BitcoinExchange::BitcoinExchange(void)
 	std::cout << "BitcoinExchange default constructor called" << std::endl;
 }
 
-BitcoinExchange::BitcoinExchange(const std::string &dataFile)
+BitcoinExchange::BitcoinExchange(const char *dataFile)
 {
 	std::cout << "BitcoinExchange assignement constructor called" << std::endl;
-	(void)dataFile;
+	loadData(dataFile);
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &other)
@@ -44,20 +44,82 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &other)
 
 void	BitcoinExchange::loadData(const char *dataFile)
 {
+	double			value;
+	std::string		date;
 	std::string		line;
 	std::ifstream	ifs(dataFile);
 	if (!ifs.is_open())
-		throw std::invalid_argument("No such file");
+		throw std::logic_error("No such .csv file");
 
-	getline(ifs, line);
-	while (getline(ifs, line))
+	std::getline(ifs, line);
+	if (line != "date,exchange_rate")
+		throw std::logic_error("Wrong .csv file format, expected in first line: 'date,exchange_rate'");
+
+	unsigned int	count_line = 0;
+	while (std::getline(ifs, line))
 	{
-		size_t	delimiterPos = line.find(',');
-		if (delimiterPos == std::string::npos)
-			throw std::logic_error("Missing comma. Excepted format: 'data,value'");
-		std::string	date = line.substr(0, delimiterPos);
-		double		value = std::atof(line.substr(delimiterPos + 1).c_str());
-		this->_data[date] = value;
+		std::istringstream	iss(line);
+		if (std::getline(iss, date, ',') && iss >> value)
+		{
+			//TODO: Date check function
+			this->_data[date] = value;
+		}
+		else
+		{
+			std::cerr << "Wrong data format at line: " << count_line << ". " <<
+						 "Ensure that the data is in the correct format: '<date> | <value>'" << '\n';
+			continue;
+		}
+		count_line++;
+	}
+}
+
+void	BitcoinExchange::checkValue(const double &value)
+{
+	if (value < 0)
+		throw std::invalid_argument("not a positive number.");
+	if (value > MAX_VALUE)
+		throw std::invalid_argument("too large a number.");
+}
+
+void	BitcoinExchange::convertBitcoin(const char *inputFile)
+{
+	double			value;
+	std::string		date;
+	std::string		line;
+	std::ifstream	ifs(inputFile);
+	if (!ifs.is_open())
+		throw std::invalid_argument("No such input file");
+
+	std::getline(ifs, line);
+	if (line != "date,value")
+		throw std::logic_error("Wrong input file format, expected in first line: 'date,value'");
+	
+	unsigned int	count_line = 0;
+	while (std::getline(ifs, line))
+	{
+		std::istringstream	iss(line);
+		if (std::getline(iss, date, '|') && iss >> value)
+		{
+			//TODO: Data check function
+			try 
+			{
+				checkValue(value);
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << "Error: " << e.what() << '\n';
+				continue;
+			}
+			std::cout << "DATE: " << date << " Value: "  << value << '\n';
+		}
+		else
+		{
+			std::cerr << "Wrong data format at line: " << count_line << ". " <<
+						 "Ensure that the data is in the correct format: '<date> | <value>'" << '\n';
+			continue;
+		}
+		count_line++;
 	}
 }
 
