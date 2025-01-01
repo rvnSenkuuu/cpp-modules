@@ -32,13 +32,14 @@ class	BitcoinExchange
 		BitcoinExchange	&operator=(BitcoinExchange const &other);
 
 		void	convertBitcoin(const char *inputFile);
-		void	printData(void);
 
 	private:
 		BitcoinExchange(void);
 
 		void	loadData(const char *dataFile);
 		void	checkValue(const double &value);
+		void	checkDate(std::string &date);
+		bool	validChar(const char &c);
 
 	private:
 		std::map<std::string, double>	_data;

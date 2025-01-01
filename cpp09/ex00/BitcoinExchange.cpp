@@ -42,6 +42,48 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &other)
 	return *this;
 }
 
+void	BitcoinExchange::checkValue(const double &value)
+{
+	if (value < 0)
+		throw std::invalid_argument("not a positive number.");
+	if (value > MAX_VALUE)
+		throw std::invalid_argument("too large a number.");
+}
+
+bool	BitcoinExchange::validChar(const char &c)
+{
+	return (c >= '0' && c <= '9') || (c == '-'); 
+}
+
+void	BitcoinExchange::checkDate(std::string &date)
+{
+	date.erase(date.find(' '));
+	if (date.length() != 10)
+		throw std::logic_error("Bad input => " + date);
+
+	for (size_t i = 0; i < date.length(); i++)
+		if (!validChar(date.at(i)))
+			throw std::logic_error("Wrong date format expected YYYY-MM-DD");
+	
+	int			year, month, day;
+	std::string	delimiter = "-";
+	size_t	fistDelPos = date.find_first_of(delimiter);
+	size_t	lastDelPos = date.find_last_of(delimiter);
+
+	year = std::atoi(date.substr(0, fistDelPos).c_str());
+	month = std::atoi(date.substr(fistDelPos + 1, lastDelPos).c_str());
+	day = std::atoi(date.substr(lastDelPos + 1).c_str());
+
+	if (year <= 0 || (year > 2025 && month > 1))
+		throw std::logic_error("Bad input => " + date);
+	if (month <= 0 || month > 12)
+		throw std::logic_error("Bad input => " + date);
+	if (day <= 0 || day > 31)
+		throw std::logic_error("Bad input => " + date);
+	if (year <= 2009 && month <= 1 && day < 3)	
+		throw std::logic_error("Bitcoin wasn't created yet at " + date);
+}
+
 void	BitcoinExchange::loadData(const char *dataFile)
 {
 	double			value;
@@ -74,14 +116,6 @@ void	BitcoinExchange::loadData(const char *dataFile)
 	}
 }
 
-void	BitcoinExchange::checkValue(const double &value)
-{
-	if (value < 0)
-		throw std::invalid_argument("not a positive number.");
-	if (value > MAX_VALUE)
-		throw std::invalid_argument("too large a number.");
-}
-
 void	BitcoinExchange::convertBitcoin(const char *inputFile)
 {
 	double			value;
@@ -104,6 +138,7 @@ void	BitcoinExchange::convertBitcoin(const char *inputFile)
 			//TODO: Data check function
 			try 
 			{
+				checkDate(date);
 				checkValue(value);
 			}
 			catch (const std::exception &e)
@@ -121,13 +156,4 @@ void	BitcoinExchange::convertBitcoin(const char *inputFile)
 		}
 		count_line++;
 	}
-}
-
-void	BitcoinExchange::printData(void)
-{
-	std::map<std::string, double>::iterator	it = this->_data.begin();
-	std::map<std::string, double>::iterator	ite = this->_data.end();
-	for (; it != ite; it++)
-		std::cout << "Date: " << it->first << " Value: " << it->second << '\n';
-	std::cout << std::endl;
 }
