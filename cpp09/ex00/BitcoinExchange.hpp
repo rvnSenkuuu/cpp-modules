@@ -23,14 +23,6 @@
 # define DATA_FILE "./data.csv"
 # define MAX_VALUE 10000
 
-template<typename T>
-std::string	numberToString(T number)
-{
-	std::ostringstream	oss;
-	oss << number;
-	return oss.str();
-}
-
 class	BitcoinExchange
 {
 	public:
