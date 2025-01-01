@@ -36,10 +36,12 @@ class	BitcoinExchange
 	private:
 		BitcoinExchange(void);
 
-		void	loadData(const char *dataFile);
-		void	checkValue(const double &value);
-		void	checkDate(std::string &date);
-		bool	validChar(const char &c);
+		void		loadData(const char *dataFile);
+		void		checkValue(const double &value);
+		void		checkDate(std::string &date);
+		bool		validChar(const char &c);
+		bool		leapYear(const int &year);
+		double		getResult(const std::string &date, const double &value);
 
 	private:
 		std::map<std::string, double>	_data;
