@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:56:51 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/02 19:51:05 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/02 20:00:16 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ bool	RPN::validOperator(const std::string &op)
 
 int	RPN::doOperation(const int &lhs, const int &rhs, const std::string &op)
 {
-	if (op == "+") return rhs + lhs;
-	if (op == "-") return rhs - lhs;
-	if (op == "*") return rhs * lhs;
+	if (op == "+") return lhs + rhs;
+	if (op == "-") return lhs - rhs;
+	if (op == "*") return lhs * rhs;
 	if (op == "/")
 	{
 		if (lhs == 0)
@@ -72,9 +72,9 @@ int	RPN::operation(const std::string &line)
 		{
 			if (this->_data.size() < 2)
 				throw std::runtime_error("Not enough arguments to operate");
-			int	lhs = this->_data.top();
-			this->_data.pop();
 			int	rhs = this->_data.top();
+			this->_data.pop();
+			int	lhs = this->_data.top();
 			this->_data.pop();
 			int res = doOperation(lhs, rhs, arg);
 			this->_data.push(res);
