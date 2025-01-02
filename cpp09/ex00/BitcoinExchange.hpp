@@ -41,6 +41,7 @@ class	BitcoinExchange
 		void		checkDate(std::string &date);
 		bool		validChar(const char &c);
 		bool		leapYear(const int &year);
+		int			getDayInMonth(int year, int month);
 		double		getResult(const std::string &date, const double &value);
 
 	private:

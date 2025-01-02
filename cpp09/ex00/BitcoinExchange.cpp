@@ -60,6 +60,15 @@ bool	BitcoinExchange::leapYear(const int &year)
 	return (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0);
 }
 
+int	BitcoinExchange::getDayInMonth(int year, int month)
+{
+	const int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	if (leapYear(year) && month == 2)
+		return 29;
+	return daysInMonth[month - 1];
+}
+
 void	BitcoinExchange::checkDate(std::string &date)
 {
 	if (date.at(date.length() - 1) == ' ')
@@ -80,14 +89,14 @@ void	BitcoinExchange::checkDate(std::string &date)
 	month = std::atoi(date.substr(fistDelPos + 1, lastDelPos).c_str());
 	day = std::atoi(date.substr(lastDelPos + 1).c_str());
 
-	if (year <= 0 || (year > 2025 && month > 1))
-		throw std::logic_error("Bad input => " + date);
+	if (year > 2025 && month > 1)
+		throw std::logic_error("Invalid date => " + date);
 	if (!leapYear(year) && month == 2 && day > 28)
-		throw std::logic_error("Bad input => " + date);
-	if (month <= 0 || month > 12)
-		throw std::logic_error("Bad input => " + date);
-	if (day <= 0 || day > 31)
-		throw std::logic_error("Bad input => " + date);
+		throw std::logic_error("Invalid date => " + date);
+	if (month < 1 || month > 12)
+		throw std::logic_error("Invalid date => " + date);
+	if (day < 1 || day > getDayInMonth(year, month))
+		throw std::logic_error("Invalid date => " + date);
 	if (year <= 2009 && month <= 1 && day < 3)	
 		throw std::logic_error("Bitcoin wasn't created yet at " + date);
 }
