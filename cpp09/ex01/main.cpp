@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:26:03 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/02 19:41:49 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/02 19:54:16 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	try
 	{
 		RPN	test;
-		int	result = test.operation(static_cast<std::string>(argv[1]));
+		int	result = test.operation(static_cast<const std::string>(argv[1]));
 		std::cout << "Result: " << result << std::endl;
 	}
 	catch (const std::exception &e)
