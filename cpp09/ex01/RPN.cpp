@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:49:43 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/03 10:13:17 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/03 10:16:59 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	RPN::validOperator(const std::string &op)
 operationType	RPN::getOperationType(const std::string &arg)
 {
 	operationType	operationIndex[MAX_OPERATION] = {ADD, SUB, MULT, DIV};
-	std::string		operation[MAX_OPERATION] = {"+", "-", "*", "/"};
+	std::string	operation[MAX_OPERATION] = {"+", "-", "*", "/"};
 
 	for (int i = 0; i < MAX_OPERATION; i++)
 		if (arg == operation[i])
@@ -85,7 +85,7 @@ int	RPN::doOperation(const int &lhs, const int &rhs, operationType type)
 
 int	RPN::operation(const std::string &line)
 {
-	std::string			arg;
+	std::string	arg;
 	std::stringstream	ss(line);
 
 	while (ss >> arg)
