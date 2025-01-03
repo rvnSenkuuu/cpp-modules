@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:08:05 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/14 19:08:05 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/03 12:24:26 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw std::runtime_error("Fail Open ifstream");
 
 	std::ofstream	ofs(outfile.c_str());
-	if (!ofs.is_open())
-	{
-		ifs.close();
+	if (ofs.is_open())
 		throw std::runtime_error("Fail Open ofstream");
-	}
 
 	for (std::string line; getline(ifs, line);)
 		if (!ifs.eof())
 			ofs << line << std::endl;
-
-	ifs.close();
-	ofs.close();
 }
