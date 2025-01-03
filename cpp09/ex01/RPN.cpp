@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:49:43 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/03 10:16:59 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/03 11:34:35 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	RPN::operation(const std::string &line)
 
 	while (ss >> arg)
 	{
+		if (arg.find('(') != std::string::npos || arg.find(')') != std::string::npos)
+			throw std::runtime_error("Parenthesis are not handled");
 		if (validOperator(arg))
 		{
 			if (this->_data.size() < 2)
