@@ -3,8 +3,7 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -MMD -MP
 RM			=	rm -rf
 
-SRC			=	main.cpp \
-				Array.cpp
+SRC			=	main.cpp
 INCLUDE		=	Array.hpp
 OBJ_PATH	=	.objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))

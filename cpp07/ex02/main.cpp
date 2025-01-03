@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:29:40 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/23 14:29:40 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/03 11:38:43 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 
 	for (int i = 0; i < MAX_VALUE; i++)
 	{
+		std::srand(std::time(NULL));
 		int random = std::rand();
 		intTArray[i] = random;
 		intArray[i] = random;
