@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 10:14:47 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/25 10:14:47 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/06 13:26:07 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	easyFindVector(const int &find)
 		data.push_back(tmp[i]);
 
 	displayContainers(data);
-
 	try
 	{
 		std::vector<int>::iterator	it = easyFind(data, find);
@@ -59,7 +58,7 @@ static void easyFindList(int &find)
 
 int	main(void)
 {
-	int			findList = 10;
+	int	findList = 10;
 	const int	findVector = 99;
 
 	easyFindVector(findVector);
