@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 10:48:40 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:06:41 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ PmergeMe::PmergeMe(int argc, char **argv)
 	std::cout << "PmergeMe assigmement constructor called" << std::endl;
 	checkArg(argc, argv);
 	loadArg(argc, argv);
-	std::cout << "Deque container value: " << std::endl;
-	displayData(this->_deqData, false);
-	std::cout << "Vector container value: " << std::endl;
-	displayData(this->_vecData, false);
 }
 
 PmergeMe::PmergeMe(PmergeMe const &other)
@@ -48,6 +44,16 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &other)
 		this->_vecData = other._vecData;
 	}
 	return *this;
+}
+
+std::deque<int>	PmergeMe::getDeque(void) const
+{
+	return this->_deqData;
+}
+
+std::vector<int>	PmergeMe::getVector(void) const
+{
+	return this->_vecData;
 }
 
 void	PmergeMe::checkArg(int argc, char **argv)
