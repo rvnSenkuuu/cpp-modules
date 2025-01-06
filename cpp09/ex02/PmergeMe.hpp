@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:14 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 11:10:01 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/06 15:31:57 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #define PMERGEME_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <cstdlib>
 # include <cstring>
+# include <ctime>
 # include <limits>
 # include <algorithm>
 # include <vector>
@@ -43,11 +45,12 @@ class	PmergeMe
 		PmergeMe(int argc, char **argv);
 		~PmergeMe(void);
 
-		std::deque<int>	getDeque(void) const;
-		std::vector<int>	getVector(void) const;
-
 		void	checkArg(int argc, char **argv);
 		void	loadArg(int argc, char **argv);
+		void	doFordJohnsonSort(int argc);
+
+		void	mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+
 
 	private:
 		PmergeMe(void);
@@ -55,7 +58,6 @@ class	PmergeMe
 		PmergeMe	&operator=(PmergeMe const &other);
 
 	private:
-		std::deque<int>	_deqData;
 		std::vector<int>	_vecData;
 };
 

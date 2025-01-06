@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 11:06:41 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/06 15:51:07 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,8 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &other)
 {
 	std::cout << "PmergeMe copy assignement opearator called" << std::endl;
 	if (this != &other)
-	{
-		this->_deqData = other._deqData;
 		this->_vecData = other._vecData;
-	}
 	return *this;
-}
-
-std::deque<int>	PmergeMe::getDeque(void) const
-{
-	return this->_deqData;
-}
-
-std::vector<int>	PmergeMe::getVector(void) const
-{
-	return this->_vecData;
 }
 
 void	PmergeMe::checkArg(int argc, char **argv)
@@ -89,7 +76,27 @@ void	PmergeMe::loadArg(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 	{
 		long	value = std::atol(argv[i]);
-		this->_deqData.push_back(value);
 		this->_vecData.push_back(value);
 	}
+}
+
+void	PmergeMe::doFordJohnsonSort(int argc)
+{
+	displayData(this->_vecData, false);
+
+	std::clock_t	vecStart = std::clock();
+	mergeInsertionVec(this->_vecData.begin(), this->_vecData.end());
+	std::clock_t	vecEnd = std::clock();
+
+	displayData(this->_vecData, true);
+	double	timeElapsed = 1000.0 * (vecEnd - vecStart) / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " <<
+				std::fixed << std::setprecision(2) << timeElapsed << "ms" << std::endl;
+}
+
+void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	//TODO
+	(void)begin;
+	(void)end;
 }
