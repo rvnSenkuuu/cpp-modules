@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:14:24 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 15:25:12 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/07 11:05:34 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	try
 	{
 		PmergeMe	test(argc, argv);
-		test.doFordJohnsonSort(argc);
+		test.FordJohnsonSort(argc);
 	}
 	catch (std::exception &e)
 	{

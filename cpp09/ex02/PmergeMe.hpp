@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:14 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 15:31:57 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:14:22 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <vector>
 # include <deque>
 # include <set>
+
+typedef	std::vector<int>::iterator	VecIt;
+typedef	std::vector<std::pair<int, int> >::iterator	VecPairIt;
 
 template<typename T>
 void	displayData(T data, bool verbose)
@@ -47,15 +50,18 @@ class	PmergeMe
 
 		void	checkArg(int argc, char **argv);
 		void	loadArg(int argc, char **argv);
-		void	doFordJohnsonSort(int argc);
+		void	FordJohnsonSort(int argc);
 
-		void	mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		void	mergeInsertionVec(std::vector<int> vec, std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 
 	private:
 		PmergeMe(void);
 		PmergeMe(PmergeMe const &other);
 		PmergeMe	&operator=(PmergeMe const &other);
+
+		std::vector<int>	genJacobsthalSeq(int n);
+		std::vector<int>	genInsertionPos(int n);
 
 	private:
 		std::vector<int>	_vecData;

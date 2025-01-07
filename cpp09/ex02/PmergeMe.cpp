@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/06 15:51:07 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:37:53 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ void	PmergeMe::loadArg(int argc, char **argv)
 	}
 }
 
-void	PmergeMe::doFordJohnsonSort(int argc)
+void	PmergeMe::FordJohnsonSort(int argc)
 {
 	displayData(this->_vecData, false);
 
 	std::clock_t	vecStart = std::clock();
-	mergeInsertionVec(this->_vecData.begin(), this->_vecData.end());
+	mergeInsertionVec(this->_vecData, this->_vecData.begin(), this->_vecData.end());
 	std::clock_t	vecEnd = std::clock();
 
 	displayData(this->_vecData, true);
@@ -94,9 +94,90 @@ void	PmergeMe::doFordJohnsonSort(int argc)
 				std::fixed << std::setprecision(2) << timeElapsed << "ms" << std::endl;
 }
 
-void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+std::vector<int>	PmergeMe::genJacobsthalSeq(int n)
 {
-	//TODO
-	(void)begin;
-	(void)end;
+	std::vector<int>	seq;
+
+	if (n == 0) return seq;
+	seq.push_back(0);
+	if (n == 1) return seq;
+	seq.push_back(1);
+
+	int	i = 2;
+	while (seq.back() <= n)
+	{
+		int	value = seq[i - 1] + 2 * seq[i - 2];
+		if (value > n) break;
+		seq.push_back(value);
+		++i;
+	}
+	return seq;
+}
+
+std::vector<int>	PmergeMe::genInsertionPos(int n)
+{
+	std::vector<int>	jacobseq = genJacobsthalSeq(n);
+	std::vector<int>	pos;
+
+	if (n == 0) return pos;
+	pos.push_back(1);
+	if (n == 1) return pos;
+	
+	for (int i = 0; i < jacobseq.size(); i++)
+	{
+		if (jacobseq[i] > pos.back())
+		{
+			int	tmp = jacobseq[i - 1];
+			pos.push_back(jacobseq[i]);
+			for (int j = jacobseq[i] - 1; j > tmp; j--)
+				pos.push_back(jacobseq[j]);
+		}
+	}
+
+	for (int i = n; i > jacobseq.back(); i--)
+		pos.push_back(i);
+
+	return pos;
+}
+
+void	PmergeMe::mergeInsertionVec(std::vector<int> vec, std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	(void)vec;
+
+	if (std::distance(begin, end) <= 1) return;
+
+	std::vector<int>	leftover;
+	std::vector<std::pair<int, int> >	pair;
+	while (std::distance(begin, end) >= 2)
+	{
+		int	first = *(begin++);
+		int	second = *(begin++);
+
+		if (first > second)
+			std::swap(first, second);
+		pair.push_back(std::make_pair(first, second));
+	}
+	if (begin != end) leftover.push_back(*begin);
+
+	std::vector<int>	 mainChain;
+	VecPairIt	pairIt = pair.begin();
+	VecPairIt	pairIte = pair.end();
+	for (; pairIt != pairIte; pairIt++)
+		mainChain.push_back(pairIt->second);
+
+	if (mainChain.size() >= 2)
+		mergeInsertionVec(mainChain, mainChain.begin(), mainChain.end());
+	
+	std::vector<int>	pending;
+	for (VecIt	it = mainChain.begin(); it != mainChain.end(); it++)
+	{
+		for (VecPairIt	pairIt = pair.begin(); pairIt != pair.end(); pairIt++)
+		{
+			if (*it == pairIt->second)
+			{
+				pending.push_back(pairIt->first);
+				break;
+			}
+		}
+	}
 }
