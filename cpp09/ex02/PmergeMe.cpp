@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/07 15:41:27 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/07 19:16:35 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	PmergeMe::FordJohnsonSort(int argc)
 	displayData(this->_vecData, false);
 
 	std::clock_t	vecStart = std::clock();
-	mergeInsertionVec(this->_vecData, this->_vecData.begin(), this->_vecData.end());
+	mergeInsertionVec(this->_vecData.begin(), this->_vecData.end());
 	std::clock_t	vecEnd = std::clock();
 
 	displayData(this->_vecData, true);
@@ -123,14 +123,14 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 	pos.push_back(1);
 	if (n == 1) return pos;
 	
-	for (size_t i = 0; i < jacobseq.size(); i++)
+	for (size_t i = 1; i < jacobseq.size(); i++)
 	{
 		if (jacobseq[i] > pos.back())
 		{
 			int	tmp = jacobseq[i - 1];
 			pos.push_back(jacobseq[i]);
 			for (int j = jacobseq[i] - 1; j > tmp; j--)
-				pos.push_back(jacobseq[j]);
+				pos.push_back(j);
 		}
 	}
 
@@ -140,33 +140,51 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 	return pos;
 }
 
-void	PmergeMe::mergeInsertionVec(std::vector<int> vec, std::vector<int>::iterator begin, std::vector<int>::iterator end)
+VecIt	PmergeMe::binarysearch(VecIt begin, VecIt end, int value)
 {
-	(void)vec;
+	VecIt	it;
+	std::iterator_traits<VecIt>::difference_type	dist, step;
 
+	dist = std::distance(begin, end);
+	while (dist > 0)
+	{
+		it = begin;
+		step = dist / 2;
+		std::advance(it, step);
+		if (*it < value)
+		{
+			begin = ++it;
+			dist -= step + 1;
+		}
+		else dist = step;
+	}
+	return begin;
+}
+
+void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
 	if (std::distance(begin, end) <= 1) return;
 
+	VecIt	it = begin;
 	std::vector<int>	leftover;
 	std::vector<std::pair<int, int> >	pair;
-	while (std::distance(begin, end) >= 2)
+	while (std::distance(it, end) >= 2)
 	{
-		int	first = *(begin++);
-		int	second = *(begin++);
+		int	first = *(it++);
+		int	second = *(it++);
 
 		if (first > second)
 			std::swap(first, second);
 		pair.push_back(std::make_pair(first, second));
 	}
-	if (begin != end) leftover.push_back(*begin);
+	if (it != end) leftover.push_back(*it);
 
 	std::vector<int>	 mainChain;
-	VecPairIt	pairIt = pair.begin();
-	VecPairIt	pairIte = pair.end();
-	for (; pairIt != pairIte; pairIt++)
+	for (VecPairIt pairIt = pair.begin(); pairIt != pair.end(); pairIt++)
 		mainChain.push_back(pairIt->second);
 
 	if (mainChain.size() >= 2)
-		mergeInsertionVec(mainChain, mainChain.begin(), mainChain.end());
+		mergeInsertionVec(mainChain.begin(), mainChain.end());
 	
 	std::vector<int>	pending;
 	for (VecIt	it = mainChain.begin(); it != mainChain.end(); it++)
@@ -180,4 +198,36 @@ void	PmergeMe::mergeInsertionVec(std::vector<int> vec, std::vector<int>::iterato
 			}
 		}
 	}
+
+	std::vector<int>	indexPos = genInsertionPos(pending.size());
+	for (size_t i = 0; i < indexPos.size(); i++)
+	{
+		VecIt	pendIt = pending.begin();
+		if (indexPos[i] == 1) mainChain.insert(mainChain.begin(), *pendIt);
+		else
+		{
+			std::advance(pendIt, indexPos[i] - 1);
+			int	value;
+			for (VecPairIt it = pair.begin(); it != pair.end(); it++)
+			{
+				if (it->first == *pendIt)
+				{
+					value = it->second; 
+					break;
+				}
+			}
+			VecIt	endIndex;
+			for (endIndex = mainChain.begin(); endIndex != mainChain.end(); endIndex++)
+				if (*endIndex == value) break;
+			VecIt	pos = binarysearch(mainChain.begin(), endIndex, *pendIt);
+			mainChain.insert(pos, *pendIt);
+		}
+	}
+
+	if (!leftover.empty())
+	{
+		VecIt	posLast = binarysearch(mainChain.begin(), mainChain.end(), *leftover.begin());
+		mainChain.insert(posLast, *leftover.begin());
+	}
+	std::copy(mainChain.begin(), mainChain.end(), begin);
 }
