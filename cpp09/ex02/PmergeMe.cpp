@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/07 15:37:53 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:41:27 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 	pos.push_back(1);
 	if (n == 1) return pos;
 	
-	for (int i = 0; i < jacobseq.size(); i++)
+	for (size_t i = 0; i < jacobseq.size(); i++)
 	{
 		if (jacobseq[i] > pos.back())
 		{
