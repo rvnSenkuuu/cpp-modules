@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:14 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/08 11:41:32 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/08 14:21:32 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 typedef	std::vector<int>::iterator	VecIt;
 typedef	std::vector<std::pair<int, int> >::iterator	VecPairIt;
 
+typedef std::deque<int>::iterator	DeqIt;
+typedef std::deque<std::pair<int, int> >::iterator	DeqPairIt;
+
 template<typename T>
 void	displayData(T data, bool verbose)
 {
@@ -43,12 +46,12 @@ void	displayData(T data, bool verbose)
 	std::cout << std::endl;
 }
 
-template<typename IT>
-IT	binarysearch(IT begin, IT end, int value)
+template<typename I>
+I	binarysearch(I begin, I end, int value)
 {
 	while (begin != end)
 	{
-		IT	mid = begin + (end - begin) / 2;
+		I	mid = begin + (end - begin) / 2;
 		if (*mid == value) return mid;
 		if (*mid < value) begin = ++mid;
 		else end = mid;
@@ -66,8 +69,8 @@ class	PmergeMe
 		void	loadArg(int argc, char **argv);
 		void	FordJohnsonSort(int argc);
 
-		void	mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-
+		void	mergeInsertionVec(VecIt begin, VecIt end);
+		void	mergeInsertionDeq(DeqIt begin, DeqIt end);
 
 	private:
 		PmergeMe(void);
@@ -79,6 +82,7 @@ class	PmergeMe
 
 	private:
 		std::vector<int>	_vecData;
+		std::deque<int>	_deqData;
 };
 
 #endif

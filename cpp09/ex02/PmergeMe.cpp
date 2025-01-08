@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/08 11:41:27 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/08 16:58:54 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ void	PmergeMe::FordJohnsonSort(int argc)
 
 	displayData(this->_vecData, true);
 
-	double	timeElapsed = 1000.0 * (vecEnd - vecStart) / CLOCKS_PER_SEC;
+	double	timeElapsedVec = 1000.0 * (vecEnd - vecStart) / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " <<
-				std::fixed << std::setprecision(2) << timeElapsed << "ms" << std::endl;
+				std::fixed << std::setprecision(2) << timeElapsedVec << "ms" << std::endl;
 }
 
 std::vector<int>	PmergeMe::genJacobsthalSeq(int n)
@@ -141,7 +141,7 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 	return pos;
 }
 
-void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void	PmergeMe::mergeInsertionVec(VecIt begin, VecIt end)
 {
 	if (std::distance(begin, end) <= 1) return;
 
@@ -167,9 +167,9 @@ void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<i
 		mergeInsertionVec(mainChain.begin(), mainChain.end());
 	
 	std::vector<int>	pending;
-	for (VecIt	it = mainChain.begin(); it != mainChain.end(); it++)
+	for (VecIt it = mainChain.begin(); it != mainChain.end(); it++)
 	{
-		for (VecPairIt	pairIt = pair.begin(); pairIt != pair.end(); pairIt++)
+		for (VecPairIt pairIt = pair.begin(); pairIt != pair.end(); pairIt++)
 		{
 			if (*it == pairIt->second)
 			{
