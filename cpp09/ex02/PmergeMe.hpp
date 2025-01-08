@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:14 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/07 17:15:44 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/08 11:41:32 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ void	displayData(T data, bool verbose)
 	std::cout << std::endl;
 }
 
+template<typename IT>
+IT	binarysearch(IT begin, IT end, int value)
+{
+	while (begin != end)
+	{
+		IT	mid = begin + (end - begin) / 2;
+		if (*mid == value) return mid;
+		if (*mid < value) begin = ++mid;
+		else end = mid;
+	}
+	return begin;
+}
+
 class	PmergeMe
 {
 	public:
@@ -61,7 +74,6 @@ class	PmergeMe
 		PmergeMe(PmergeMe const &other);
 		PmergeMe	&operator=(PmergeMe const &other);
 
-		VecIt	binarysearch(VecIt begin, VecIt end, int value);
 		std::vector<int>	genJacobsthalSeq(int n);
 		std::vector<int>	genInsertionPos(int n);
 

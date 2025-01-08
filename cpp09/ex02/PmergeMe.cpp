@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/08 10:25:52 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/08 11:41:27 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,19 +139,6 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 		pos.push_back(i);
 
 	return pos;
-}
-
-VecIt	PmergeMe::binarysearch(VecIt begin, VecIt end, int value)
-{
-	while (begin != end)
-	{
-		VecIt	mid = begin + (end - begin) / 2;
-		
-		if (*mid == value) return mid;
-		if (*mid < value) begin = ++mid;
-		else end = mid;
-	}
-	return begin;
 }
 
 void	PmergeMe::mergeInsertionVec(std::vector<int>::iterator begin, std::vector<int>::iterator end)
