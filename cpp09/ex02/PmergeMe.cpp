@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/07 19:16:35 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/08 10:25:52 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	PmergeMe::FordJohnsonSort(int argc)
 	std::clock_t	vecEnd = std::clock();
 
 	displayData(this->_vecData, true);
+
 	double	timeElapsed = 1000.0 * (vecEnd - vecStart) / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " <<
 				std::fixed << std::setprecision(2) << timeElapsed << "ms" << std::endl;
@@ -142,21 +143,13 @@ std::vector<int>	PmergeMe::genInsertionPos(int n)
 
 VecIt	PmergeMe::binarysearch(VecIt begin, VecIt end, int value)
 {
-	VecIt	it;
-	std::iterator_traits<VecIt>::difference_type	dist, step;
-
-	dist = std::distance(begin, end);
-	while (dist > 0)
+	while (begin != end)
 	{
-		it = begin;
-		step = dist / 2;
-		std::advance(it, step);
-		if (*it < value)
-		{
-			begin = ++it;
-			dist -= step + 1;
-		}
-		else dist = step;
+		VecIt	mid = begin + (end - begin) / 2;
+		
+		if (*mid == value) return mid;
+		if (*mid < value) begin = ++mid;
+		else end = mid;
 	}
 	return begin;
 }
