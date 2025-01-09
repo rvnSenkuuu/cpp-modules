@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:49:43 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/03 11:34:35 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/09 11:29:57 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,13 @@ int	RPN::doOperation(const int &lhs, const int &rhs, operationType type)
 {
 	switch (type)
 	{
-		case ADD:
-			return lhs + rhs;
-			break;
-		case SUB:
-			return lhs - rhs;
-			break;
-		case MULT:
-			return lhs * rhs;
-			break;
+		case ADD: return lhs + rhs;
+		case SUB: return lhs - rhs;
+		case MULT: return lhs * rhs;
 		case DIV:
 			if (lhs == 0)
 				throw std::logic_error("Division by 0 is impossible");
 			return lhs / rhs;
-			break;
 		default:
 			break;
 	}

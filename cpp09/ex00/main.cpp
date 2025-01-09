@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:13:50 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/30 14:13:50 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/09 11:25:54 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cerr << "Error Usage: ./btc <input_file>" << std::endl;
 		return 1;
 	}
 
