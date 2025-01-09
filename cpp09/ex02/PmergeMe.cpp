@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:55 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/09 09:54:36 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/09 10:58:59 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	PmergeMe::FordJohnsonSort(int argc)
 
 	double	timeElapsedDeq = 1000.0 * (deqEnd - deqStart) / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " <<
-				std::fixed << std::setprecision(2) << timeElapsedDeq << "ms" << std::endl;
+				std::setprecision(2) << timeElapsedDeq << "ms" << std::endl;
 }
 
 std::vector<int>	PmergeMe::genJacobsthalSeqVec(int n)
