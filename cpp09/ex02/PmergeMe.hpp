@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:15:14 by tkara2            #+#    #+#             */
-/*   Updated: 2025/01/08 14:21:32 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/09 09:24:33 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,11 @@ class	PmergeMe
 		PmergeMe(PmergeMe const &other);
 		PmergeMe	&operator=(PmergeMe const &other);
 
-		std::vector<int>	genJacobsthalSeq(int n);
-		std::vector<int>	genInsertionPos(int n);
+		std::vector<int>	genJacobsthalSeqVec(int n);
+		std::vector<int>	genInsertionPosVec(int n);
+
+		std::deque<int>	genJacobsthalSeqDeq(int n);
+		std::deque<int>	genInsertionPosDeq(int n);
 
 	private:
 		std::vector<int>	_vecData;
