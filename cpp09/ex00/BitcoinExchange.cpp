@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:23:14 by tkara2            #+#    #+#             */
-/*   Updated: 2024/12/30 14:23:14 by tkara2           ###   ########.fr       */
+/*   Updated: 2025/01/10 09:34:01 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void	BitcoinExchange::convertBitcoin(const char *inputFile)
 		throw std::invalid_argument("No such input file");
 
 	std::getline(ifs, line);
-	if (line != "date,value")
+	if (line != "date | value")
 		throw std::logic_error("Wrong input file format, expected in first line: 'date,value'");
 	
 	unsigned int	count_line = 1;
